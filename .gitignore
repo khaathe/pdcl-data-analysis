@@ -1,0 +1,14 @@
+*.pdf
+*.synctex.gz
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.bbl
+*.blg
+*.bcf
+*.out
+*.xml
+*.glsdefs
+
+.vscode/

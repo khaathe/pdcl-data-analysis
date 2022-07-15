@@ -1,0 +1,100 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+% Load titlesec before hyperref because it causes conflict otherwise
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{subfiles}
+\usepackage[acronym]{glossaries}
+\usepackage{multicol}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{todonotes}
+\usepackage{xcolor}
+\usepackage{authblk}
+\usepackage{lineno}
+
+% TODO: Remove package if unecessary
+\usepackage{xcolor}
+\usepackage{soul}
+
+\titleformat{\subsection}{\bfseries\normalsize}{}{}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{}{}{}
+
+\geometry{
+    a4paper,
+    left = 2.5cm,
+    right = 2.5cm,
+    bottom = 2.5cm,
+    top = 2.5cm
+}
+
+\usepackage[
+style=numeric,
+sorting=none
+]{biblatex}
+
+
+\addbibresource{biblio.bib}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+    citecolor=blue,
+    pdfpagemode=FullScreen
+}
+
+% To disable link of the acronyms
+% Could load glossaries package before hyperref for same result
+\glsdisablehyper 
+
+\renewcommand{\baselinestretch}{1.5}
+
+\linenumbers
+
+\title{
+    Exploration of altered mechanism using Differential Expression and Pathway Enrichment analysis : Application to glioblastoma
+}
+
+\author[1,2]{Kévin SPINICCI}
+
+\affil[1]{Univ. Grenoble Alpes, CNRS, UMR 5525, VetAgro Sup, Grenoble INP, TIMC, 38000 Grenoble, France}
+\affil[2]{Department of Mathematics - Swansea University}
+
+\date{2022}
+
+\subfile{manuscript/acronym.tex}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{secnumdepth}{0}
+
+\subfile{manuscript/abstract.tex}
+
+% \begin{multicols*}{2}
+\subfile{manuscript/introduction.tex}
+
+\subfile{manuscript/material-method.tex}
+
+\subfile{manuscript/result.tex}
+
+\subfile{manuscript/discussion.tex}
+
+\subfile{manuscript/conclusion.tex}
+
+\subfile{manuscript/acknowledgements.tex}
+
+\subfile{manuscript/conflicts-of-interest.tex}
+
+% \end{multicols*}
+
+\printbibliography
+
+\newpage
+
+\subfile{manuscript/supplementary-material.tex}
+
+\end{document}
