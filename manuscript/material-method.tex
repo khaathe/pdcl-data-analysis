@@ -1,2 +1,61 @@
 \section{Material and Method}
 
+\subsection{Data Sets}
+
+Cells were taken from tumor of 20 patients diagnosed with glioblastoma, they were  then cultured \textit{in vitro}.
+RNA-Seq analysis was then conducted to obtain the raw counts of approximately 20,000 genes for each samples.
+Due to licensing limitations, data cannot be shared with the publication and all biological experiments were conducted by the \acrfull{icm} in Paris.
+\todo{check the origin of the pdcl dataset}
+We will refer to this dataset as \acrfull{pdcl}.
+Only one replicate per sample is available.
+
+Because the \acrshort{pdcl} dataset does not includes matching control samples, we compared them to astrocytes RNA-Seq data from a study on the characterization of different astrocytic models by Lundin  al \cite*{Lundin2018}.
+Raw counts data are available for download on the \acrfull{geo} platform under the accession number \textbf{GSE109001}.
+The dataset contain 4 samples of different astrocyte cell lines with 3 replicates per samples.
+The accession number and the name of the samples are listed in table \ref*{table:list-control-samples}.
+At the time of the publication, data were last updated on January 29, 2019.
+
+\begin{table}
+    \centering
+    \begin{tabular}{ |c|c| }
+        \hline
+        Accession Number & Sample name \\
+        \hline
+        GSM2927872 & AF22\_NES-Astro\_d29\_Br1 \\
+        GSM2927873 & AF22\_NES-Astro\_d29\_Br2 \\
+        GSM2927874 & AF22\_NES-Astro\_d29\_Br3 \\
+        \hline
+        GSM2927881 & iCellAstro\_Br1 \\
+        GSM2927882 & iCellAstro\_Br2 \\
+        GSM2927883 & iCellAstro\_Br3 \\
+        \hline
+        GSM2927884 & CCF\_Br1 \\
+        GSM2927885 & CCF\_Br2 \\
+        GSM2927886 & CCF\_Br3 \\
+        \hline
+        GSM2927887 & phaAstro\_Br1 \\ 
+        GSM2927888 & phaAstro\_Br2 \\ 
+        GSM2927889 & phaAstro\_Br3 \\ 
+        \hline
+    \end{tabular}
+    \caption{
+        List of samples with their accession number used as the control condition.
+        Each samples can be either downloaded separately or as one raw count file in text format using the accession number \textbf{GSE109001} on \acrshort{geo}.
+    }
+    \label{table:list-control-samples}
+\end{table}
+
+We also compare the pathways altered in the \acrshort{pdcl} dataset with the pathways found altered in a dataset accessible on \acrshort{tcga} database. 
+We downloaded glioblastoma gene expression data from the TCGA-GBM project for both tumour and control samples.
+The lastest \acrshort{tcga} version available \textbf{v33.1} was released on May 31 2022, transcriptomes profilling for all \acrshort{tcga} projects were updated in version \textbf{v32.0} released March 29 2022.
+\todo{redo analysis with updated database}
+RNA quantification was performed on primary or recurrent tumour for the glioblastoma samples, and on solid tissue for control samples.
+Importantly, very few normal transcriptomes profilling are available for control samples in the TCGA-GBM project and none are available for TCGA-LGG (Lower Grade Glioma data).
+Thus, this dataset will be over-represented by tumourous samples with 169 tumour samples and 5 control samples.
+
+\subsection{Differential Expression Analysis}
+
+\subsection{Pathway Enrichment Analysis}
+
+\subsection{Implementation of the Workflow and Interpretation of the Results}
+
