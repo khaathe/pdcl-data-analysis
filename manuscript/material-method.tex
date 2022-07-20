@@ -89,5 +89,24 @@ With all this limitations in mind, \acrshort{penda} was designed to investigate 
 
 \subsection{Pathway Enrichment Analysis}
 
+Here, we used the results of the \acrlong{de} analysis described above as input to investigate the deregulated pathways in the \acrshort{pdcl} and \acrshort{tcga}.
+The \acrlong{pdcl} dataset was analyzed at both the population and the patient scale while the \acrshort{tcga} was only examined at the population scale.
+Here we selected the two tools G:Profiler and \acrfull{gsea} to run the pathway enrichment analysis.
+
+% Describe G:Profiler
+
+% Describe GSEA
+
+Despite both of them need a list of genes, G:Profiler need only the genes symbol as input while for \acrshort{gsea}, each genes must be assigned a metric value.
+A study from Zyla \textit{et al} has shown that the \acrshort{gsea} metric used can impact the results \cite*{Zyla2017}.
+They evaluated the performance of 16 differents metrics and found that the absolute value of the Moderated Welch Test statistic, the Minimum Significant Difference, the absolute value of the Signal to Noise ratio and the Baumgartner-Weiss-Schindler test statistic give the best outcome.
+Among the best performing metrics cited, some are computed as part of a statistical test.
+Thus, we ranked the genes of the dataset with the statistic of the Wald-Test computed by DESeq2 before we run \acrshort{gsea}.
+The Wald-Test statistic has 2 features usefull for ranking the genes : (1) the statistic value has the same sign as the $log_2$ Fold Change, giving the direction of deregulation (up or down) and providing biological information; (2) the higher the absolute value of the statistic is, the more significant the difference between the condition tested and the control is.
+Therefore, the Wald-Test statistic combine both biological and statistical informations, suggesting it is a valuable metric for running \acrshort{gsea} analysis.
+To reduce the number of pathways to investigate in the litterature and to ensure the reliability of the result, we will select the pathways that are found deregulated both by G:Profiler and \acrshort{gsea}.
+We consider a pathway deregulated if the adjusted p-value is below $0.1$.
+To be consistent between G:Profiler and \acrshort{gsea}, we choose the \acrfull{fdr} correction method for multiple hypothesis testing.
+
 \subsection{Implementation of the Workflow and Interpretation of the Results}
 
