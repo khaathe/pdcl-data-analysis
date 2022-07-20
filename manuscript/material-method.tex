@@ -57,21 +57,35 @@ Thus, this dataset will be over-represented by tumourous samples with 169 tumour
 
 Before we assess the pathways that are altered in case of glioblastoma we need to look for genes whose expression are deregulated.
 A \acrfull{de} analysis consist of comparing the expression of a gene, the quantity of RNA produced by a gene, between two conditions (usually disease versus a control).
+Results generated during this step are then used as input to perform Pathway Enrichment analysis to associate the list of deregulated genes with a list of biological pathways.
 To quantify the expression of a gene, reads produced during an RNA-Seq experiment are mapped to the genes of a reference genome.
 The number of mapped reads is computed for each genes giving a raw value called raw counts.
 Factors such as transcript length, total number of reads and sequencing biases can impact the raw counts value. 
 Therefore, raw counts need to be normalized to obtain a value suitable for comparison \cite*{Conesa2016}.
-Different tools are available to perform \acrshort{de} analysis such as edgeR \cite*{Robinson2010} and Limma \cite*{Ritchie2015}.
-In this study, we use DESeq2 \cite*{Love2014} an R package designed for \acrshort{de} analysis.
+Different tools are available to perform \acrshort{de} analysis such as edgeR \cite*{Robinson2010}, Limma \cite*{Ritchie2015}, DESeq2 \cite*{Love2014} and \acrshort{penda} \cite*{Richard2020}.
+In this study, we selected DESeq2 \cite*{Love2014} and \acrfull{penda} to carry out the \acrshort{de} analysis.
+
+\acrshort{de} analysis was performed on the two datasets \acrshort{pdcl} and \acrshort{tcga} where we compared all the tumourous samples against all the normal samples (glioblastoma versus normal).
+With this approach, we identify a typical glioblastoma profile or the typical gene deregulations in the case of glioblastoma that is used in the pathway enrichment analysis.
+Glioblastoma are known to be heterogeneous tumours, hindering therapeutic success \cite*{Neftel2019,Delgado-Lopez2016, Quinones2018}.
+Since the approach described does not account for heterogeneity between patients, we compared each samples from the \acrshort{pdcl} dataset one by one with all the controls.
+In this second approach, we define the deregulated pathways for each samples to determine which pathways are the most, or the least, commonly deregulated in our dataset.
+However, the \acrshort{pdcl} dataset contain one replicate per patient while the hypothesis used for statistical testing in DESeq2 assume several replicates.
+This lead to reduced accuracy and reliability of the results of DESeq2 as the conditions to use this tool are not met anymore.
+In this regard, we used the results generated with \acrshort{penda} on each samples of \acrshort{pdcl} dataset during a previous study carried out in our team.
+Results from DESeq2 and \acrshort{penda} generated during this step are then used for pathway enrichment to determine the biological pathways affected.
+
 DESeq2 uses a negative bionomial distribution (also called gamma-Poisson distribution) to model read counts and perform a Wald-Test to test for differential expression.
 As DESeq2 includes a built-in normalization method, only raw counts can be used as input to the tool.
 It also perform an automated detection of outliers, detection of gene with low counts, estimation of model factors and gene expression dispersion.
-The $log_2 fold change$ value is a numeric value used to quantify the strength and direction of deregulation (up or down) between a condition and the control.
+The $log_2$ fold change value is a numeric value used to quantify the strength and direction of deregulation (up or down) between a condition and the control.
 We selected DESeq2 for the features cited above, its ease of use and its overall performance \cite*{Love2014}.
 
-\acrshort{de} analysis was performed on the two datasets \acrshort{pdcl} and \acrshort{tcga} where we compared all the tumourous samples against all the normal samples (glioblastoma versus normal).
-This will find the mean genes deregulation in the case of glioblastoma or a common glioblastoma profile.
-However, 
+\acrshort{penda} is a rank-based method to perform \acrshort{de} using a sample from the condition to test for differential expression and a reference dataset \cite*{Richard2020}.
+In comparison, population scale analysis tools like DESeq2 usually model the data using a distribution law and perform a statistical test to detect differential expression.
+Those methods were designed to investigate typical gene deregulations patterns, consequently they do not provide informations at the individual scale.
+They are also sensitive to batch effets and the choice of normalization applied.
+With all this limitations in mind, \acrshort{penda} was designed to investigate gene expression data at the individual scale with robustness to batch and normalization effects.
 
 \subsection{Pathway Enrichment Analysis}
 
