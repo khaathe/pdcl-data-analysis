@@ -125,8 +125,13 @@ Therefore, the Wald-Test statistic combine both biological and statistical infor
 To reduce the number of pathways to investigate in the litterature and to ensure the reliability of the result, we will select the pathways that are found deregulated both by G:Profiler and \acrshort{gsea}.
 We consider a pathway deregulated if the adjusted p-value is below $0.1$.
 To be consistent between G:Profiler and \acrshort{gsea}, we choose the \acrfull{fdr} correction method for multiple hypothesis testing.
-% Describe the filter appliead to the GMT files
-
+We downloaded gene set from \acrshort{kegg} \cite*{Kanehisa2019} and Reactome \cite*{Gillespie2022}, two biological databases with curated set of data.
+A same pathway can have a different definition between databases, the glycolysis is defined as \textit{canonical glycolysis} in Gene Ontology, \textit{glycolysis} in Reactome and \textit{Glycolysis/Gluconeogenesis} in \acrshort{kegg}.
+As the genes included in each pathways may change following the database, comparing the results obtained with different sources would reveal pathways that may not appear with one database.
+It is beneficial to exclude small and large pathways as : (1) small pathways are redundant with larger pathways while large pathways are often too general (metabolism, cell-cycle); (2) small pathways are never picked up by pathway enrichment tools while large pathway tend to always show up in the results; (3) higher number of pathways in the data makes multiple-testing correction more strict \cite*{Reimand2019}.
+Pathways size of 10-15 to 200-500 genes are recommanded yet sizes of 2,000 genes can be found in the litterature \cite*{Reimand2019}.
+In this paper, we kept pathways of 15 to 1,000 genes.
+After validation of the pathways found by the enrichment tools, we filtered out pathways associated to the \textit{Disease} categorie as they do not bring usefull information (example : \textit{Glioma} from \acrshort{kegg}).
 
 \subsection{Implementation of the Workflow and Interpretation of the Results}
 
