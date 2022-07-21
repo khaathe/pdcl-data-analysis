@@ -93,9 +93,27 @@ Here, we used the results of the \acrlong{de} analysis described above as input 
 The \acrlong{pdcl} dataset was analyzed at both the population and the patient scale while the \acrshort{tcga} was only examined at the population scale.
 Here we selected the two tools G:Profiler and \acrfull{gsea} to run the pathway enrichment analysis.
 
-% Describe G:Profiler
+G:Profiler is a tool for finding biological processes enriched in a list of genes (for example a list of deregulated genes or a list of mutated genes) accessible either online using their web interface or using their API and libraries \cite*{Raudvere2019}.
+It search for pathways or biological categories which are over-represented in a list of genes using the cumulative hypergeometric test.
+g:SCS, a new method for multiple testing correction developped by the G:Profiler team, is implemented ad used by default.
+Users are able to choose the more known Bonferroni and \acrshort{fdr} correction method.
 
-% Describe GSEA
+\acrfull{gsea} is a rank-based method developped by Subramanian \textit{et al} to interpret gene expression data with a java application available for download.
+Genes in the list feed to the tools must be ordered using a ranking metric that can be either a positive or negative value.
+For example, the user can order the genes using the difference in expression between two conditions (fold change).
+The \acrshort{gsea} approach determine whether the genes involved into a gene set are mostly distributed at the top or the bottom of the gene list.
+An \acrfull{es} is computed for each gene set by running through the list of genes, increasing a running-sum statistic by the rank of the gene if the gene is present in the current gene set or decreasing the statistic otherwise.
+The maximum deviation from zero computed during the run is the \acrshort{es}, it correpond to a weighted Kolmogorov-Smirnov-like statistic.
+Then a null distribution for the \acrshort{es} is computed by permutating the gene in the dataset (phenotype permutation is also available) to estimate the significance of the observed \acrshort{es}.
+\acrshort{gsea} use the \acrshort{fdr} method to adjust for multiple hypothesis testing.
+
+biological informaton must be provided to pathway enrichment tools as gene set, a group of genes sharing a common biological feature (for example a biological function or chromosomal location).
+Both G:Profiler and \acrshort{gsea} need biological information in a tabular format called \acrfull{gmt} where each rows is a gene set, in this study gene sets are pathways.
+The first column of the file contain the pathway ID, the second column contain a description and the remaining column are all the genes involved in the pathway.
+G:Profiler is updated regularly with the most common databases such as \acrshort{kegg}, Reactome, WikiPathways, miRTarBase and Gene Ontology.
+All gene set can be downloaded from the G:Profiler website, except for \acrshort{kegg} and TRANSFACT due to data licensing limitations.
+\acrshort{gsea} include built-in gene set from the Molecular Singatures Database (MSigDB), they also can be downloaded.
+G:Profiler and \acrshort{gsea} allow the user to submit custom \acrshort{gmt} file as well.
 
 Despite both of them need a list of genes, G:Profiler need only the genes symbol as input while for \acrshort{gsea}, each genes must be assigned a metric value.
 A study from Zyla \textit{et al} has shown that the \acrshort{gsea} metric used can impact the results \cite*{Zyla2017}.
@@ -107,6 +125,8 @@ Therefore, the Wald-Test statistic combine both biological and statistical infor
 To reduce the number of pathways to investigate in the litterature and to ensure the reliability of the result, we will select the pathways that are found deregulated both by G:Profiler and \acrshort{gsea}.
 We consider a pathway deregulated if the adjusted p-value is below $0.1$.
 To be consistent between G:Profiler and \acrshort{gsea}, we choose the \acrfull{fdr} correction method for multiple hypothesis testing.
+% Describe the filter appliead to the GMT files
+
 
 \subsection{Implementation of the Workflow and Interpretation of the Results}
 
