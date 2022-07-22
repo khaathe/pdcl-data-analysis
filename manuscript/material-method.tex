@@ -1,5 +1,29 @@
 \section{Material and Method}
 
+\subsection{Implementation of the Workflow and Interpretation of the Results}
+
+The protocol used in this study can be splited in 3 steps. 
+The datasets used, \acrfull{de} and Pathway Enrichment analysis are then described in more details in the next sections.
+\begin{enumerate}
+    \item \textbf{Define a list of genes of interest} : In this step we use RNA-Seq data to look for the genes that are deregulated in glioblastoma. 
+    We compared, gene expression between samples taken from patien's tumour with healthy astrocytes cells.
+    \item \textbf{Find the deregulated pathways} : We use the list of deregulated genes found in the previous step as input to pathway enrichment.
+    Pathway enrichment analysis search for pathways that are enriched in the list of genes.
+    As a result, pathway enrichment analysis look for the pathways that altered in glioblastoma when using a list of deregulated genes in this disease.
+    We selected two methods G:Profiler and \acrfull{gsea}, and two databases \acrfull{kegg} and Reactome.
+    \item \textbf{Interpret the results} : We compared the differences in categories enriched between the tools for each databases.
+    As both \acrshort{kegg} and Reactome organize their pathways in a hierarchical manner we can map each pathways to their \textit{Top Level Pathway}, the highest pathway in the tree.
+    Those \textit{Top Level Pathway} are too general to bring deep insight into biological processes affected, yet we used them to define biological categories (For example Cell-Cyle).
+    Therefore, we defined biological categories for the two database and mapped each of the pathways to one of those categories.
+    hierarchical ordering of the pathways was retrieved by interrogating the web API of both databases.
+    To avoid false positive and reduce the number of pathways found, we then selected only the pathways that are below the significant threshold in both G:Profiler and \acrshort{gsea}.
+\end{enumerate}
+All the data analysis were carried out with the R programming langage.
+To perform G:Profiler pathway enrichment we used the official R librarie (version \textbf{0.2.1}).
+Although an R script is available on the \acrshort{gsea} webpage, it is not maintained by the team.
+Instead we used the \textit{fgsea} package for Fast Gene Set Enrichment Analysis available on Bioconductor (version \textbf{1.12.0}) \cite*{Korotkevich2021}.
+We used ggplot2 (version \textbf{3.3.6}) and rmarkdown (version \textbf{2.14}) to generate the plots in this publication and the report (in supplementary materials).
+
 \subsection{Data Sets}
 
 Cells were taken from tumor of 20 patients diagnosed with glioblastoma, they were  then cultured \textit{in vitro}.
@@ -132,6 +156,3 @@ It is beneficial to exclude small and large pathways as : (1) small pathways are
 Pathways size of 10-15 to 200-500 genes are recommanded yet sizes of 2,000 genes can be found in the litterature \cite*{Reimand2019}.
 In this paper, we kept pathways of 15 to 1,000 genes.
 After validation of the pathways found by the enrichment tools, we filtered out pathways associated to the \textit{Disease} categorie as they do not bring usefull information (example : \textit{Glioma} from \acrshort{kegg}).
-
-\subsection{Implementation of the Workflow and Interpretation of the Results}
-
