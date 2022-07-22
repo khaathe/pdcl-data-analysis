@@ -2,7 +2,7 @@
 
 \subsection{Implementation of the Workflow and Interpretation of the Results}
 
-The protocol used in this study can be splited in 3 steps. 
+The protocol used in this study can be splited in 3 steps described here.
 The datasets used, \acrfull{de} and Pathway Enrichment analysis are then described in more details in the next sections.
 \begin{enumerate}
     \item \textbf{Define a list of genes of interest} : In this step we use RNA-Seq data to look for the genes that are deregulated in glioblastoma. 
@@ -23,6 +23,15 @@ To perform G:Profiler pathway enrichment we used the official R librarie (versio
 Although an R script is available on the \acrshort{gsea} webpage, it is not maintained by the team.
 Instead we used the \textit{fgsea} package for Fast Gene Set Enrichment Analysis available on Bioconductor (version \textbf{1.12.0}) \cite*{Korotkevich2021}.
 We used ggplot2 (version \textbf{3.3.6}) and rmarkdown (version \textbf{2.14}) to generate the plots in this publication and the report (in supplementary materials).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/workflow-diagram.png}
+    \caption{
+        Diagram of the overall approach used in this paper.
+    }
+    \label{fig:workflow-diagram}
+\end{figure}
 
 \subsection{Data Sets}
 
