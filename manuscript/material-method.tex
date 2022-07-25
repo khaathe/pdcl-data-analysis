@@ -26,11 +26,18 @@ We used ggplot2 (version \textbf{3.3.6}) and rmarkdown (version \textbf{2.14}) t
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img/workflow-diagram.png}
+    \includegraphics[width=\textwidth]{img/workflow-diagram}
     \caption{
-        Diagram of the overall approach used in this paper.
+        Diagram of the overall approach used in this paper to find in case of glioblastoma.
+        The top figure represent the workflow to find the typical deregulated pathways in the case of glioblastoma.
+        The expression from all tumour samples and control samples is included in the dataset for comparison.
+        The bottom figure, represent the workflow to determine the pathways speciffically deregulated for each \acrshort{pdcl}.
+        One \acrshort{pdcl} and all the control are included in the dataset, hence there are as many datasets as the number of \acrshort{pdcl}.
+        In the global analysis only DESeq2 is used for \acrlong{de} analysis while \acrshort{penda} and DESeq2 are used in the personnalized analysis.
+        In both analysis G:Profiler and \acrshort{gsea} are selected to carry out pathway enrichment.
+        Then we filter out pathways that do not pass the threshold of significance or that are not common to the two pathway enrichment tools.
     }
-    \label{fig:workflow-diagram}
+    \label{fig:workflow-diagram-global}
 \end{figure}
 
 \subsection{Data Sets}
