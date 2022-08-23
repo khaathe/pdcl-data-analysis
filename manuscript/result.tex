@@ -4,7 +4,7 @@
 
 \subsubsection{Pathways mainly involved in the Cell-Cycle, DNA replication and Repair are shared between the two datasets}
 
-The entry \textit{Glioma - Homo sapiens (human)} pathway (path:hsa05214) in \acrshort{kegg} document some of the deregulation caused by glioblastoma.
+The entry \textit{Glioma - Homo sapiens (human)} pathway (\textbf{path:hsa05214}) in \acrshort{kegg} document some of the deregulation caused by glioblastoma.
 Zyla \textit{et al} used this entry as a target pathway to assess the sensitivity of different ranking metrics when studying microarray data from brain tissue \cite*{Zyla2017}.
 \acrshort{fdr} value in G:Profiler is $8.898 \times 10^{-3}$ and $5.240 \times 10^{-2}$ respectively for \acrshort{pdcl} and \acrshort{tcga}, \acrshort{fdr} in \acrshort{gsea} is $4.487 \times 10^{-3}$ and $8.298 \times 10^{-1}$ respectively for \acrshort{pdcl} and \acrshort{tcga}.
 Not only the \acrshort{fdr} value is lower for the \acrshort{tcga} dataset but the \acrshort{fdr} of \acrshort{gsea} for \acrshort{pdcl} does not pass the more lenient threshold we defined in this study.
@@ -30,14 +30,38 @@ Thus, regulation of p53 may be upregulated to make up for the lack of activity f
 Among the pathways enriched only in thez \acrshort{tcga} dataset, we found pathways that are children of the shared pathways between both dataset.
 For example, \textit{Amplification of signal from unattached kinetochores via a MAD2 inhibitory signal} (R-HSA-141444) is a children pathway of \textit{Cell Cycle Checkpoints} (R-HSA-69620) that is to say it is smaller pathway which take place in its parent pathways.
 When we compared the \acrshort{fdr} values of this pathways in G:Profiler and \acrshort{gsea} for both dataset, only G:Profiler's result does not pass the threshold used (\acrshort{fdr} value is 0.125 in G:Profiler with \acrshort{pdcl} sample).
-Although almost all genes of this pathway are present in the dataset, closer look at the number of deregulated genes involved in this pathway in G:Profiler's result for both datasets showed 74 genes in the \acrshort{tcga} compared to 48 for \acrshort{pdcl}.
-If we first hypothetized that the lower number of genes included in the \acrshort{pdcl} dataset (~20,000 genes compared to ~60,000 in \acrshort{tcga}) may reduce the ability of pathway enrichment tools to detect smaller pathways, this shows that it is rather caused the absence of deregulation in \acrshort{pdcl} samples.
+Although almost all genes of this pathway are present in the dataset, a closer look at the number of deregulated genes involved in this pathway in G:Profiler's result for both datasets showed 74 genes in the \acrshort{tcga} compared to 48 for \acrshort{pdcl}.
+If we first hypothetized that the lower number of genes included in the \acrshort{pdcl} dataset (~20,000 genes compared to ~60,000 in \acrshort{tcga}) may reduce the ability of pathway enrichment tools to detect smaller pathways, this shows that it is rather caused by the absence of deregulation in \acrshort{pdcl} samples.
 
 \subsubsection{Cell-Cycle}
 
+Two phases of the Cell Cyle are enriched in both datasets : the \textit{S phase} (\textbf{R-HSA-69242}) and the \textit{Mitotic Anaphase} (\textbf{R-HSA-68882}).
+Interestingly, the \textit{Mitotic Anaphase}  was enriched only in \acrshort{tcga} when we kept pathways between 15 and 1,000 genes but was enriched as well in the \acrshort{pdcl} dataset when we set up a limit of 15 to 500 genes.
+This indicates that the number of pathways present in the \acrshort{gmt} file has an impact on the \acrshort{fdr} associated with each pathways.
+Linked to the \textit{S phase}, the \textit{G1/S phase transition} (\textbf{R-HSA-69205}) and the \textit{DNA strand elongation} (\textbf{R-HSA-69190}) are enriched with the \textit{DNA strand elongation} a child pathway of the \textit{S phase}.
+The \textit{Cell Cycle Checkpoints} pathway (\textbf{R-HSA-69620}) is enriched in both datasets.
+However, \textit{Amplification of signal from unattached kinetochores via MAD2 inhibitory singal} (\textbf{R-HSA-141444}) a pathway included in the \textit{Mitotic Spindle Checkpoint} (\textbf{R-HSA-69618}) is only enriched in the \acrshort{tcga} dataset.
+
 \subsubsection{Metabolism}
 
+Although pathways involved in metabolism are enriched in both datasets, none of them are shared between the two dataset.
+The \acrshort{tcga} dataset is mostly enriched with pathways involved in the energetic metabolism such as \textit{Phospholipid metabolism} (\textbf{R-HSA-1483257}), \textit{Regulation of insuline secretion} (\textbf{R-HSA-422356}) and \textit{Selenoamino acid metabolism} (\textbf{R-HSA-2408522}).
+The glycerophospholipid metabolism, part of a phospholipid metabolism, is enriched in both Reactome and \acrshort{kegg} database.
+The \acrshort{tcga} dataset is also enriched with pathways involved in the Metabolism of proteins or the Metabolism of RNA such as \textit{Peptide chain elongation} (\textbf{R-HSA-156902}), \textit{Translation initiation complex formation} (\textbf{R-HSA-72649}) and \textit{rRNA processing in the nucleus and cytosol} (\textbf{R-HSA-8868773}).
+Compared to the \acrshort{tcga} dataset, there are no pathways involved in the Metabolism of proteins or the Metabolism of RNA enriched in the \acrshort{pdcl}.
+Furthermore, the only pathway involved in metabolism found deregulated is the \textit{Cholesterol Biosynthesis} (\textbf{R-HSA-191273}).
+In the \acrshort{kegg} database, the \textit{Steroid biosynthesis} (\textbf{path:hsa00100}) pathway, a pathway that include a set of reaction involved in the \textit{Cholesterol Biosynthesis}, is also deregulated.
+
 \subsubsection{Extra-Cellular Matrix}
+
+The \textit{Collagen formation} (\textbf{R-HSA-1474290}) and \textit{focal adhesion} (\textbf{path:hsa04510}) pathways are shared between the \acrshort{tcga} and \acrshort{pdcl} datasets.
+They are related to the \acrlong{ecm} and the cell-matrix interactions as collagen is a protein composing the \acrshort{ecm} and the \textit{focal adhesion} is a process where the cell adhere to the matrix.
+Only in the \acrshort{tcga} dataset, the \textit{Assembly of collagen fibrils and other multimeric structures} (\textbf{R-HSA-2022090}) and the \textit{Collagen biosynthesis and modifying enzymes} (\textbf{R-HSA-1650814}), two pathways included in the \textit{Collagen formation}, are found enriched.
+The \textit{\acrshort{ecm}-receptor interaction} (\textbf{path:hsa04512}), \textit{Cell adhesion molecules} (\textbf{path:hsa04514}) and the \textit{Laminin interaction} (\textbf{R-HSA-3000157}) are pathways related to the adhesion of the cell to the \acrshort{ecm} only enriched in the \acrshort{tcga} datasets as well.
+The \textit{Non-integrin membrane-ECM interactions} (\textbf{R-HSA-3000171}) is another pathway related to the \acrshort{ecm}-cell interactions yet only found enriched in the \acrshort{pdcl}.
+The results seems to indicate that \acrshort{ecm} and cell adhesion carries a role for glioblastoma growth.
+Since the \textit{Collagen formation} pathway is shared by the two datasets, it suggest that this process is important for glioblastoma growth.
+However, \textit{Laminin interaction} and \textit{Non-integrin membrane-ECM interactions}, two pathways classified on the same level in the hierarchie of Reactome, tend to shows different mechanisms by which the tumour cell can influence its adhesion to the \acrshort{ecm}.
 
 \subsubsection{Neuronal System}
 
