@@ -4,7 +4,7 @@
 
 \subsubsection{Pathways mainly involved in the Cell-Cycle, DNA replication and Repair are shared between the two datasets}
 
-The entry \textit{Glioma - Homo sapiens (human)} pathway (\textbf{path:hsa05214}) in \acrshort{kegg} document some of the deregulation caused by glioblastoma.
+The entry \textit{Glioma} pathway (\textbf{path:hsa05214}) in \acrshort{kegg} document some of the deregulation caused by glioblastoma.
 Zyla \textit{et al} used this entry as a target pathway to assess the sensitivity of different ranking metrics when studying microarray data from brain tissue \cite*{Zyla2017}.
 \acrshort{fdr} value in G:Profiler is $8.898 \times 10^{-3}$ and $5.240 \times 10^{-2}$ respectively for \acrshort{pdcl} and \acrshort{tcga}, \acrshort{fdr} in \acrshort{gsea} is $4.487 \times 10^{-3}$ and $8.298 \times 10^{-1}$ respectively for \acrshort{pdcl} and \acrshort{tcga}.
 Not only the \acrshort{fdr} value is lower for the \acrshort{tcga} dataset but the \acrshort{fdr} of \acrshort{gsea} for \acrshort{pdcl} does not pass the more lenient threshold we defined in this study.
@@ -67,7 +67,62 @@ However, \textit{Laminin interaction} and \textit{Non-integrin membrane-ECM inte
 
 \subsection{Comparison of the deregulated pathways between PDCLs}
 
-\subsubsection{ECM and Cholesterol biosynthesis among the most frequently deregulated pathways}
+\subsubsection{Cell adhesion to the ECM is the most frequently deregulated pathways}
+
+In addition to a global comparison between glioblastoma and normal samples, we also compare each glioblastoma samples in the \acrshort{pdcl} dataset to assess the samples specific deregulations.
+Table \ref*{table:frequently-dereg-pathways} shows the pathways found deregulated in at least 3 different \acrshort{pdcl} samples.
+\textit{Focal adhesion} is the most commonly deregulated pathway with 13 different samples, slightly more than half of the total number of samples in the dataset.
+It is also a deregulated pathway found shared between the \acrshort{tcga} and \acrshort{pdcl} dataset when conudcting the global.
+Hence, this pathway might have potential in glioblastoma therapy for a wide range of tumour.
+To corroborate this hypothesis, other pathways involved in collagen synthesis and  interactions \acrshort{ecm}-cell interactions are deregulated in 3 to 6 different samples (\textbf{R-HSA-1650814}, \textbf{path:hsa04512}, \textbf{R-HSA-8948216}, \textbf{R-HSA-1474290}).
+In a similar way, \textit{Steroid biosynthesis} and \textit{Cholesterol biosynthesis}, two pathways identified in the \acrshort{pdcl} during the global analysis, are found deregulated in 5 and 3 different samples, respectively.
+Despite it is not found enriched in the global analysis, the \textit{Oxidative phosphorylation} (\textbf{path:hsa00190}), well-known for its role in the generation of \acrshort{atp}, is found deregulated in 5 samples.
+This pathway has been widely studied due to its important role in the generation of \acrshort{atp} and its potential implification in the Warburg Effect, an increase of usage of glycolysis to produce \acrshort{atp} even though oxygen is available.
+It was first hypothetized that mitochondria were deffective in tumour cell, yet it was later mitochondrial function was similar to normal cells \cite*{Cairns2011}.
+Since this pathway is not deregulated in the global anayslis yet it is in 5 different samples, the results suggest that deregulation of this process is cell-dependant rather than a common feature of cancer.
+However, this process is unexpectedly up-regulated in all those 5 samples which contrast with the previous statement.
+For this reason, this result should be taken carefully.
+The second most frenquently deregulated patwhay is the \textit{Axon guidance} (\textbf{path:hsa04360}), a pathway involved in the formation of the neuronal network using guidance factors to influence the the way the growth cone will turn.
+The \textit{Hippo signaling pathway} (\textbf{path:hsa04392}, \textbf{path:hsa04390}) and \textit{Retrograde endocannnabinoid signaling} (\textbf{path:hsa04723}), two signaling pathway whose role in cancer have been documented in the litterature, are found deregulated in 6 and 5 different samples, respectively.
+\todo{read the article about them before citing them as references}
+
+\begin{table}
+    \centering
+    \resizebox*{\textwidth}{!}{
+        \begin{tabular}{ |c|c|c|c|c| }
+            \hline
+            Pathway ID & Description & Database & Category & Number of PDCL \\
+            \hline
+            path:hsa04510 & Focal adhesion & KEGG & Cellular Processes & 13 \\
+            path:hsa04360 & Axon guidance & KEGG & Organismal Systems & 9 \\
+            R-HSA-1650814 & Collagen biosynthesis and modifying enzymes & Reactome & ECM & 6 \\
+            path:hsa00100 & Steroid biosynthesis & KEGG & Metabolism & 5 \\
+            path:hsa00190 & Oxidative phosphorylation & KEGG & Metabolism & 5 \\
+            path:hsa04392 & Hippo signaling pathway - multiple species & KEGG & Environmental Information Processing & 5 \\
+            path:hsa04512 & ECM-receptor interaction & KEGG & Environmental Information Processing & 5 \\
+            path:hsa04723 & Retrograde endocannabinoid signaling & KEGG & Organismal Systems & 5 \\
+            R-HSA-8948216 & Collagen chain trimerization & Reactome & ECM & 5 \\
+            path:hsa03008 & Ribosome biogenesis in eukaryotes & KEGG & Genetic Information Processing & 3 \\
+            path:hsa03020 & RNA polymerase & KEGG & Genetic Information Processing & 3 \\
+            path:hsa04390 & Hippo signaling pathway & KEGG & Environmental Information Processing & 3 \\
+            path:hsa04612 & Antigen processing and presentation & KEGG & Organismal Systems & 3 \\
+            path:hsa04714 & Thermogenesis & KEGG & Organismal Systems & 3 \\
+            R-HSA-1474290 & Collagen formation & Reactome & ECM & 3 \\
+            R-HSA-176187 & Activation of ATR in response to replication stress & Reactome & Cell Cycle & 3 \\
+            R-HSA-191273 & Cholesterol biosynthesis & Reactome & Metabolism & 3 \\
+            R-HSA-5693538 & Homology Directed Repair & Reactome & DNA Repair & 3 \\
+            R-HSA-6790901 & rRNA modification in the nucleus and cytosol & Reactome & Metabolism of RNA & 3 \\
+            \hline
+        \end{tabular}
+    }
+    \caption{
+        Table of the frequently deregulated pathways in the \acrshort{pdcl} dataset when assessing the alteration specfic to each samples.
+        The table includes only pathways that found deregulated in at least three different samples, totalising 18 pathways.
+        The \acrshort{kegg} database include two different entries for the \textit{Hippo signaling} pathway.
+        Taken together, the textit{Hippo signaling} pathway is found deregulated in 6 samples.
+    }
+    \label{table:frequently-dereg-pathways}
+\end{table}
 
 \subsubsection{PDCL samples exhibit different categories deregulated}
 
