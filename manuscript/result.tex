@@ -124,5 +124,31 @@ The \textit{Hippo signaling pathway} (\textbf{path:hsa04392}, \textbf{path:hsa04
     \label{table:frequently-dereg-pathways}
 \end{table}
 
-\subsubsection{PDCL samples exhibit different categories deregulated}
+\subsubsection{Differencies in deregulated processes between PDCL samples}
 
+\begin{figure}
+    \includegraphics[width=\textwidth]{img/barplot-categ-pdcl}
+    \caption{
+        Number of deregulated pathways per category and per samples in \acrshort{pdcl} datasets.
+    }
+    \label{fig:barplot-categ-pdcl}
+\end{figure}
+
+Even though that pathways were below the significant threshold in G:Profiler and \acrshort{gsea}, one one samples of the \acrshort{pdcl} dataset (4371-p37) has no pathways common to both enrichment method and thus has no pathways found deregulated.
+As can be seen in figure \ref*{fig:barplot-categ-pdcl}, the pathways deregulated in the sample 4339-p21 are mainly involved in the Cell-Cycle or DNA processes (DNA repair and replication).
+Not only it is the sample with the most deregulated pathways, but it is the sample with the most biological processes taking places in cell cycling affected as well.
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{img/heatmap-fdr-pathway}
+    \caption{
+        G:Profiler and \acrshort{gsea} \acrfull{fdr} of the pathways deregulated for each samples in the \acrshort{pdcl} datasets.
+        Pathways below the significant threshold in both pathway enrichment tools are highlighted in a black box.
+        Onhly a selection of pathways are shown in this figure.
+    }
+    \label{fig:heatmap-fdr-pathway}
+\end{figure}
+
+Figure \ref*{fig:heatmap-fdr-pathway} shows that the part of the cell cycle affected for the sample 4339-p21 are the G1/S phases transition, checkpoints in G1 and G2/M phase, DNA repair system and p53 signaling.
+p53 is one of the most frequently mutated genes in the case of glioblastoma \cite*{McLendon2008}.
+7142-p14 and N14-1525 shows also dysregulation of the \textit{DNA Double-Strand Break Repair} system, despite none of the pathways involved in the different phases of the Cell Cycle are affected.
+Samples N13-1300 and N14-1525 are the only samples with a dysregulation in the \textit{Oxidative Phosphorylation} that also present alterations in the \textit{Respiratory electron transport}, N14-1525 showing in addition alteration of the \textit{Mitochondrial translation}, suggesting that they may be different mechanism leading to dysregulated oxidative metabolism.
