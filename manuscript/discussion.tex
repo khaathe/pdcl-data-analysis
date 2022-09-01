@@ -42,3 +42,29 @@ Taken together, those evidences confirm that cholesterol synthesis is dysregulat
 
 \subsection{Limits of the study}
 
+Our workflow start with a \acrlong{de} analysis were we merely compare the gene expression of samples belonging to one condition with a control condition (usually a normal sample).
+The type of samples used for the control condition directly dictate what kind of information we will get.
+However, we had to download RNA-Seq data from healthy brain cells available in others studies as no matching control were available for the \acrshort{pdcl} dataset.
+As a result we introduce biological variability which can greatly impact the results.
+In the case of cholesterol metabolism, cholesterol synthesis is found downregulated in the \acrshort{pdcl} dataset which seems contradictory to the statement found in the litterature (an increased cholesterol metabolism confering an advantage to glioblastoma proliferation and invasion).
+Glioblastoma cells tend to increase their cholesterol intake rather than increasing the synthesis of cholesterol, made by astrocytes cells \cite*{Villa2016, Pirmoradi2019}.
+The control dataset used in this study include RNA-Seq data coming from astrocyte which might explain this result.
+
+Several replicate per samples are recommended to minimize the impact of both technical and biological variability \cite*{Conesa2016}.
+DESeq2 statistical test hypothesis assume that several replicates are available per sample and allow the user to use complex formulae to describe how the variance should be computed \cite*{Love2014}.
+Here, neither dataset include several replicates per samples.
+As a result, we consider all the samples are replicates of a typical glioblastoma samples.
+
+Another limit of our study lies in the RNA-Seq experiment protocol.
+Cells were taken from tumour of patients diagnosed with glioblastoma then cultivated \textit{in vitro}.
+To limit the variability and reduce any bias, controls were selected to be cultivated in the same condition and belong to the same cell type.
+Because both tumoural and normal samples were cultivated \textit{in vitro}, they do not represent accurately the \textit{in vivo} state of the cell.
+\textit{In vivo} dysregulation may be different due to tumour microenvironment, especially in glioblastoma due to its high heterogeneity partially driven by the microenvironment \cite*{Neftel2019}.
+Nonetheless, most studies of tumour microenvironment relies on \textit{in vitro} models as \textit{in vivo} observations of cell's metabolism is hard \cite*{Xiao2019}.
+
+Finally, we have not found in the litterature any publication that has evaluated the performance of the DESeq2 statistic as the gene metric for \acrshort{gsea}.
+Generally, the fold change of a gene is used as a metric \cite*{Reimand2019}, but a study of the performance of 16 different metrics seems to show that tests statistic are better suited to rank genes for \acrshort{gsea} \cite*{Zyla2017}.
+We firstly used the fold change to rank genes in our dataset, leading to poor results with few pathways common between \acrshort{gsea} and G:Profiler (result not shown).
+In comparison, the DESeq2 statistic yield much better performance and more comparable result between the 2 enrichment tools.
+The \acrshort{fdr} value for the \textit{Glioma} entry in \acrshort{kegg} with the \acrshort{tcga} dataset indicate that this statistic might be used as a potential metric to rank genes before enrichment with \acrshort{gsea}.
+More investigation to evaluate the performance of this metric are necessary.
