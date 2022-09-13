@@ -38,7 +38,8 @@ The dataset contains 4 samples of different astrocyte cell lines with 3 replicat
     \caption{
         List of samples with their accession number used as the control condition.
         Each sample can be either downloaded separately or as one raw count file in text format using the accession number GSE109001 on \acrfull{geo}.
-        The dataset contains 4 samples of different astrocyte cell lines with 3 replicates per sample, all information about the samples including the accession number are listed in table \ref*{table:list-control-samples}.
+        The accession number is an ID to retrieve date on the \acrshort{geo} database.
+        The dataset contains 4 samples of different astrocyte cell lines with 3 replicates per sample.
         At the time of the publication, data were last updated on January 29, 2019.
     }
     \label{table:list-control-samples}
@@ -54,9 +55,10 @@ Few normal transcriptomes profiling are available for the brain, hence this data
 
 This analysis consist of comparing the expression of genes in a tumour against a control to look for genes whose expressions are deregulated (over or under expressed).
 This generate a list of genes as a result that is then used in the second step to perform pathways enrichment analysis.
-To quantify the expression of a gene, reads produced during an RNA-Seq experiment are mapped to the genes of a reference genome.
+Different portions of RNA, called reads, are sequenced during RNA-Seq experiment.
+To quantify the expression of a gene, those reads are then mapped to the genes of a reference genome.
 The number of mapped reads is computed for each gene giving a raw value called raw counts.
-Factors such as transcript length, the total number of reads and sequencing biases can impact the raw counts value, therefore this value is normalized to obtain a value suitable for comparison \cite*{Conesa2016}.
+Factors such as transcript (mRNA that went through post-transcriptional modification) length, the total number of reads and sequencing biases can impact the raw counts value, therefore this value is normalized to obtain a value suitable for comparison \cite*{Conesa2016}.
 Different tools are available to perform \acrshort{de} analysis such as edgeR \cite*{Robinson2010}, Limma \cite*{Ritchie2015}, DESeq2 \cite*{Love2014} and \acrshort{penda} \cite*{Richard2020}.
 In this study, we selected DESeq2 \cite*{Love2014} and \acrfull{penda} to carry out the \acrshort{de} analysis.
 
@@ -72,7 +74,7 @@ The results from DESeq2 and \acrshort{penda} were fed to different pathway enric
 
 \subsubsection{DESeq2}
 
-DESeq2 uses a negative binomial distribution (also called gamma-Poisson distribution) to model read counts and perform a Wald Test to test for differential expression.
+DESeq2 uses a negative binomial distribution (also called gamma-Poisson distribution) to model read counts and perform a Wald Test to test for differential expression \cite*{Love2014}.
 As DESeq2 includes a built-in normalization method, only raw counts can be used as input to the tool.
 It also performs an automated detection of outliers, detection of genes with low counts, estimation of model parameters and gene expression dispersion.
 The $log_2$ fold change value is a numeric value used to quantify the strength and direction of deregulation (up or down) between a condition and the control.
@@ -97,8 +99,8 @@ The p-value represent the probability that a pathways is found enriched due to a
 Therefore the lower the p-value is, the more significant the result.
 When statistical testing is repeated, the p-value can be found significant by chance alone.
 Multiple-testing correction method adjust the significance of the p-value to correct for this effect.
-The most commonly used method, and the one used in this paper, is Benjaminini-Hochberg \acrfull{fdr} multiple-hypothesis correction method \cite*{Reimand2019}.
-Like for the p-value, we want the \acrshort{fdr} to be the lowest possible.
+The most commonly used method, and the one used in this paper, is Benjaminini-Hochberg \acrfull{fdr} multiple-hypothesis correction method.
+Like for the p-value, we want the \acrshort{fdr} to be the lowest possible, generally below 0.05 yet 0.1 is also found in the literature \cite*{Reimand2019}.
 To reduce the number of pathways to investigate in the literature and to ensure the reliability of the result, we selected the results with a \acrshort{fdr} below 0.1 in both G:Profiler and \acrshort{gsea}.
 
 \subsubsection{G:Profiler}
@@ -112,6 +114,7 @@ We choose the \acrshort{fdr} correction method as \acrshort{gsea} use the same m
 
 \acrshort{gsea} is a rank-based method developed by Subramanian \textit{et al} \cite*{Subramanian2005} that determines the pathways enriched in a list of genes ordered by a metric.
 This ranking metric is a float value that can be positive or negative, for example, the fold change in expression between a tumour and a control.
+The list is sorted in decreasing order, thus genes the most strongly or significantly upregulated will be at the top of the list and at bottom for the downregulated.
 The \acrshort{gsea} approach determines whether the genes involved in a gene set are mostly distributed at the top or the bottom of a gene list.
 The algorithm of \acrshort{gsea} runs through the list of genes to compute a score called  \acrfull{es}, similar to a weighted Kolmogorov-Smirnov-like statistic.
 A gene metric is added to the score if it is present in the pathways, substracted otherwise.

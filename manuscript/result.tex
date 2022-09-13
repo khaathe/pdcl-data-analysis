@@ -6,12 +6,19 @@
 
 The \acrshort{kegg} database document the processes affected in the case of many diseases including glioma.
 Zyla \textit{et al} used the \textit{Glioma} entry (path:hsa05214) as a target pathway to assess the sensitivity of different ranking metrics when studying microarray data from brain tissue \cite*{Zyla2017}.
+They used the p-value associated with the enriched pathway to assess the sensitivity of each method.
+To recall, the p-value indicates how significantly enriched a pathway is, the lower the better.
+Therefore, for the target result \textit{glioma}, the p-value should be very low when studying RNA-Seq data from glioblastoma.
+We here use the \acrshort{fdr}, an adjusted p-value to correct for multiple hypothesis testing, to determine the sensitivity of G:Profiler and \acrshort{gsea} in our analysis.
 Here, \acrshort{fdr} value for this pathway in G:Profiler is 0.008898 for \acrshort{pdcl} and 0.05240 for \acrshort{tcga}, in \acrshort{gsea} it is 0.004487 for \acrshort{pdcl} and 0.8298 for \acrshort{tcga}.
 Not only the \acrshort{fdr} value is lower for the \acrshort{tcga} dataset but the \acrshort{fdr} of \acrshort{gsea} for \acrshort{pdcl} does not pass the threshold defined in this study.
+Even if the \acrshort{fdr} value was below the threshold in G:Profiler for the \textit{Glioma} target result in \acrshort{pdcl}, because it was above the threshold for G:Profiler we do not consider this result enriched in the \acrshort{pdcl} dataset.
 Controls for the \acrshort{pdcl} dataset are taken from another study \cite*{Lundin2018}, introducing experimental and biological variability independent from disease deregulation.
 While controls in the \acrshort{tcga} dataset come from matching samples taken off the original tissue following the exact same protocol as the tumour samples to reduce such variability.
 It might explain why \acrshort{gsea} failed to detect the \textit{Glioma} entry in the \acrshort{pdcl} dataset.
 
+Like the \textit{Glioma} target result, we only consider a pathway to be enriched in a dataset if the \acrshort{fdr} value for this pathway is below the threshold in both G:Profiler and \acrshort{gsea}.
+Thus, only the pathways that meet this criterion are presented and discussed in the results.
 45 pathways are found deregulated in the \acrshort{pdcl} dataset and 304 in the \acrshort{tcga} dataset.
 As can be seen in the figure \ref{fig:heatmap-fdr-global-tcga}, the two datasets shared 19 significantly deregulated pathways which are involved in the cell-cycle, DNA repair and replication, gene expression, extracellular matrix and diseases.
 \begin{figure}
@@ -148,7 +155,8 @@ Not only it is the sample with the most deregulated pathways, but it is the samp
     \caption{
         G:Profiler and \acrshort{gsea} \acrfull{fdr} of the pathways deregulated for each samples in the \acrshort{pdcl} datasets.
         Pathways below the significance threshold in both pathway enrichment tools are highlighted in a black box.
-        Only a selection of pathways is shown in this figure to avoid plot overloading and pathway redundancy.
+        Pathways were manually selected to avoid redundancy of the informations, overloading the plot with numerous entry and show processes with ease of Interpretation.
+        We kept pathways that were not tooo general because they do not bring meaningfull information, nor pathways that were too precise since they are difficult to link to more known processes.        
         Deregulated pathways are mostly involved in the Cell-Cycle, DNA repair, \acrlong{ecm} and Metabolism.
     }
     \label{fig:heatmap-fdr-pathway}
