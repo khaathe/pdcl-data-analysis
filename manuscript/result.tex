@@ -35,6 +35,28 @@ Interestingly, \textit{Regulation of TP53 activity} is found upregulated by \acr
 A study from \acrshort{tcga} on frequent mutations in glioblastoma has shown that p53 signalling is altered in 87\% of the samples and p53 is inactivated by mutation in 35\% of the samples \cite*{McLendon2008}.
 Thus, the regulation of p53 may be upregulated to make up for the lack of activity from the mutated p53.
 
+As can be seen in the figure \ref*{fig:complete-piechart-categ-pdcl}, the most deregulated category in the \acrshort{tcga} dataset is the \textit{Organismal Systems} category which includes biological processes involved in the Immune system, Endocrine system, Circulatory system, Digestive system, Sensory system, etc.
+In the \acrshort{pdcl} dataset, \textit{Cell Cycle} is the most deregulated category in both the global and the personalized analysis (the analysis where each \acrshort{pdcl} samples are compared one by one to all the controls, lower panel in figure \ref*{fig:workflow-diagram-global}).
+The \textit{Signal Transduction}, \textit{Metabolism of RNA and proteins} and the \textit{Cell-Cycle} categories are among the top 5 most deregulated categories in \acrshort{tcga}.
+In comparison, less categories are affected in the global analysis for the \acrshort{pdcl} dataset, with \textit{DNA Processes} and \textit{Cell-Cycle} categories among the top 3 most deregulated categories.
+In both \acrshort{tcga} and the global analysis of \acrshort{pdcl}, the \textit{Disease} category is the second most affected category.
+\begin{figure}
+    \includegraphics[width=\textwidth]{img/complete-piechart-categ-pdcl}
+    \caption{
+        Number of deregulated pathways per category and per analysis.
+        The results are presented for the \acrshort{tcga} dataset, the global analysis and the personalized analysis of the \acrshort{pdcl} dataset.
+        To recall, during the personalized analysis with compared each \acrshort{pdcl} samples against all the controls one by one (lower panel in figure \ref*{fig:workflow-diagram-global}).
+        In the personalized analysis of the \acrshort{pdcl} dataset, only different results can contribute to the number of pathways for a category.
+        Thus, a same pathway that is found deregulated in two different samples will only be counted once.
+        The \textit{Organismal Systems} category includes pathways involved in the Immune system, Endocrine system, Circulatory system, Digestive system, Sensory system, etc.
+        Among all analysis, the \textit{Disease} category is the first or the second most deregulated category.
+        For \acrshort{tcga}, the top 5 most deregulated categories includes \textit{Organismal Systems}, \textit{Signal Transduction and Transport}, \textit{Metabolism of RNA and proteins} and \textit{Cell-Cycle}.
+        While for the \acrshort{pdcl} dataset (global analysis), the most deregulated categories include \textit{Cell-Cycle} and \textit{DNA processeses}.
+        The deregulated pathways in the personalized analysis of the \acrshort{pdcl} dataset mostly belong to the \textit{Cell-Cycle}, \textit{DNA processeses} and \textit{Organismal Systems}, \textit{Metabolism} and \textit{Signal Transduction and Transport}.
+    }
+    \label{fig:complete-piechart-categ-pdcl}
+\end{figure}
+
 \subsubsection{Cell-Cycle}
 
 Two phases of the Cell Cyle are enriched in both datasets : the \textit{S phase} (R-HSA-69242) and the \textit{Mitotic Anaphase} (R-HSA-68882).
@@ -135,6 +157,10 @@ The \textit{Hippo signaling pathway} (path:hsa04392, path:hsa04390) and \textit{
 
 \subsubsection{Differencies in deregulated processes between PDCL samples}
 
+In the global analysis of the \acrshort{pdcl} dataset, only two deregulated pathways are associated with the \textit{Metabolism} and none with the \textit{Metabolism of RNA and proteins} and \textit{Signal Transduction and Transport} (figure \ref*{fig:complete-piechart-categ-pdcl}).
+In contrast, the personnalized analysis of this dataset shows eleven deregulated pathways in \textit{Metabolism} and \textit{Signal Transduction and Transport}, and eight in \textit{Metabolism of RNA and proteins}.
+This seems to indicate that \textit{Metabolism}, \textit{Metabolism of RNA and proteins} and \textit{Signal Transduction and Transport} are biological categories with high heterogeneity in the \acrshort{pdcl} dataset.
+
 \begin{figure}
     \includegraphics[width=\textwidth]{img/barplot-categ-pdcl}
     \caption{
@@ -142,6 +168,7 @@ The \textit{Hippo signaling pathway} (path:hsa04392, path:hsa04390) and \textit{
         Among the samples, the categories frequently affected are involved in Disease, DNA Processesses, Organismal System and Signal Transduction/Transport.
         Sample 4339-p21 is the \acrshort{pdcl} with the biggest number of deregulated pathways, they are mainly involved in the Cell-Cycle or DNA processes (DNA repair and replication).
         No pathways pass the significance threshold in G:Profiler and \acrshort{gsea} at the same time for the samples 4371-p37.
+        The \acrshort{kegg} entry \textit{Biosynthesis of cofactors} (path:hsa01240) is enriched in the sample 4339-p21 but it could not be mapped to a biological category, we remove it from the plot to simplify visualization. 
     }
     \label{fig:barplot-categ-pdcl}
 \end{figure}
