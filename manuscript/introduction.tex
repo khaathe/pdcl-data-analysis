@@ -4,27 +4,28 @@ RNA-Sequencing (RNA-Seq) are now a standard technology used by the life sciences
 With a wide range of applications, variations of RNA-Seq protocols and analyses described in the literature, new users can find RNA-Seq studies hard to conduct \cite*{Conesa2016}.
 Omics experiments generated data are growing at a fast rate, allowing the scientific community to find mechanisms related to a particular condition.
 Nevertheless, these experiments often produce a long list of genes to analyze which still represents a challenge for researchers. 
-Pathway enrichment analysis, a method that turns such a large list of genes into a smaller list of pathways, became a standard approach to interpreting omics data \cite*{Reimand2019}.
+Pathway enrichment analysis, a method that turns such a large list of genes into a smaller list of pathways, became a standard approach to interpret omics data \cite*{Reimand2019}.
 
-This method is very interesting as (1) it reduces the complexity of the data to analyze and (2) interpreting altered pathways gives more explanation than a list of genes.
+This method is very interesting as (1) it reduces the complexity of the data to analyze and (2) interpreting altered pathways is more tangible than a list of genes.
 3 generations of pathway enrichment have been developed to interpret high-throughput technologies data.
-The first generation, \acrfull{ora} statistically test for pathways that are found over or under-represented in a list of genes.
+The first generation, called \acrfull{ora}, statistically test for pathways that are found over or under-represented in a list of genes.
 These methods generally use a hypergeometric, chi-square or binomial distribution for their test.
-The second generation, \acrfull{fcs} hypothesize that not only individual large changes in genes expression can significantly affect a pathway, but small coordinated changes in sets of genes can as well.
+The second generation, called \acrfull{fcs}, hypothesize that not only individual large changes in gene expressions can significantly affect a pathway, but small coordinated changes in sets of genes can do as well.
 \acrshort{fcs} methods use a gene-level statistic to compute each pathway's test statistic.
-The last generation, \acrfull{pt} goes further than the previous generation by using information about the interaction between genes (activation/inhibition, cell compartment) to test for enrichment.
-Despite more and more limitations have been addressed through the different generations of pathway enrichment, they are still limited by (1) the exhaustiveness of the information covered by current database annotations and (2) the ability of these methods to include the dynamic nature of a biological system \cite*{Khatri2012}.
+The last generation, called \acrfull{pt}, goes further than the previous generation by using information about the interaction between genes (activation/inhibition, cell compartment) to test for enrichment.
+Despite more and more limitations have been addressed through the different generations of pathway enrichment, they are still limited by (1) the exhaustiveness of the information covered by current databases annotations and (2) the inability of these methods to account for the dynamic nature of a biological system \cite*{Khatri2012}.
 
 Glioblastoma is an aggressive brain tumour classified grade IV by the \acrfull{who} known to be the most common as well as the deadliest brain cancer \cite*{Quinones2018,Cheng2015}.
 The current standard of care consists of surgery followed by radiotherapy combined with cycles of temozolomide chemotherapy \cite*{LeRhun2019}.
 Intensive research failed to improve the patient outcome and the median survival for treated patients is only 14 months \cite*{Delgado-Lopez2016}.
 Even after tumour resection patients are not out of trouble as almost all tumours recur with a decreased sensibility to therapy \cite*{Campos2016}.
 
-In this article, we present a workflow to assess the deregulated pathways using RNA-Seq data using a statistical method.
-We apply the method to the glioblastoma dataset available on the \acrfull{tcga} cancer database and to our own dataset of glioblastoma RNA-Seq data.
+In this article, we present a workflow to deduced the deregulated pathways from RNA-Seq data using statistical methods.
+We apply the method to the glioblastoma dataset available on the \acrfull{tcga} database and to our own dataset of glioblastoma RNA-Seq data.
 In a first time, we compare the dysregulation in the \acrshort{tcga} dataset with our own datasets to assess their similarities and specificities.
-One of the reseaon of therapeutic failure for glioblastompa lies into its heteregeneity \cite*{Neftel2019}.
-Yet, in this first approach we are looking for typical dysregulationin the case of glioblastoma.
-Thus in a second time, we compare each tumourous sample of our own dataset one by one with the control to account for heterogeneity among samples.
+One of the reason of therapeutic failure for glioblastoma lies into its heteregeneity \cite*{Neftel2019}.
+Yet, in this first approach we are looking for typical dysregulation in the case of glioblastoma.
+Thus in a second time, we compare each tumour samples of our own dataset one by one with all the controls to account for heterogeneity among samples.
 In this second approach, we look for the pathways commonly deregulated in our tumoural dataset.
-Finally, we briefly review the literature to validate 2 biological processes identified by our workflow and the limits of this study.
+Finally, we briefly review the literature to validate 2 biological processes identified by our workflow and by which mechanisms they can be used as potential target for therapy.
+We also present shortly describe the limits of this study.
