@@ -2,15 +2,16 @@
 
 In this article, we present a method relying on a statistical test to analyze biological data produced by RNA-Seq experiments.
 We apply this method to glioblastoma, an aggressive and invasive kind of brain tumour with poor patient outcomes.
-At our disposal, we have data coming from 20 patients diagnosed with glioblastoma shared by a collaborator, called \acrshort{pdcl}, which we compare with a dataset from the TCGA-GBM project on the \acrshort{tcga} database.
-Our workflow starts by running a \acrlong{de} analysis on the RNA-Seq data to find genes with expression affected by the glioblastoma disease.
+We dispose of a dataset called \acrshort{pdcl} consisting of RNA-Seq data from 20 patients diagnosed with glioblastoma shared by a collaborator.
+We compare this dataset with a dataset composed of RNA-Seq data from the TCGA-GBM project accessible on the \acrshort{tcga} database.
+Our workflow starts by running a \acrlong{de} analysis on the RNA-Seq data to find genes whose expressions are affected by the glioblastoma disease.
 This analysis produces a list of genes whose regulation is altered.
 To carry on this step, we selected the tools DESeq2 and \acrshort{penda} as they both show good performances.
-The second step finds the biological pathway enriched in the list of genes.
+The second step finds the biological pathways enriched in this list of genes.
 We submit the list of genes to G:Profiler and \acrshort{gsea}, two pathway enrichment tools.
 While G:Profiler only need the name of the deregulated genes, \acrshort{gsea} needs that each gene in the list is associated with a metric for its statistical test.
 We use the statistic computed by DESeq2 for its test as it gives the direction of deregulation (up or down) and the significance of the result (the further from zero, the more significant the deregulation is).
-A same mechanism can be defined slightly differently among the databases, hence we downloaded pathways information from Reactome and \acrshort{kegg} to ensure the exhaustiveness of the results.
+A same mechanism can be defined slightly differently among the databases, hence we downloaded pathway informations from Reactome and \acrshort{kegg} to ensure the exhaustiveness of the results.
 In the last step, we select the results passing the significance threshold in both G:Profiler and \acrshort{gsea} to avoid false positives.
 We find that most of the mechanisms altered in both \acrshort{tcga} and \acrshort{pdcl} are involved in the Cell-Cycle, DNA replication and Repair.
 In both cases, the \textit{focal adhesion} and \textit{Collagen formation} pathways are deregulated.
