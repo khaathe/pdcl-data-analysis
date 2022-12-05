@@ -52,7 +52,11 @@ The TCGA-GBM project aim to sequence the mutations and gene expressions for the 
 Glioblastoma tumour was the first to be sequence by the \acrshort{tcga} initiative.
 The dataset contains gene expressions for primary/recurrent tumours and solid normal tissues.
 All samples have been processed following the bioinformatic pipeline defined by \acrshort{tcga} and described on their website.
-Few normal transcriptomes profiling are available for the brain, hence this dataset is over-represented by tumourous samples with 169 tumour samples and 5 control samples.
+The TCGA-GBM project contains 169 samples of glioblastoma and 5 controls only.
+Hence we downloaded RNA-seq data from post-mortem healthy brain available on the \acrfull{hbm} ( \url{https://human.brain-map.org/} ) to add more controls to the dataset.
+The database includes RNA-Seq data of 242 tissue samples across two brains (121 samples per brains) representing 29 cortical and subcortical regions.
+Extraction and sequencing protocol are described in details on the \acrlong{hbm} website.
+Briefly, RNA were sequenced using Illumina sequencing technology, read sequences were aligned to the genome using RNA-Seq by Expectation-Maximization and transcripts were defined using the knownGene table from the USCD Genome Broswer.
 
 \subsection{Differential Expression Analysis}
 
