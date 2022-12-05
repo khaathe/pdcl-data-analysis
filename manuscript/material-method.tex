@@ -68,12 +68,12 @@ In this study, we selected DESeq2 \cite*{Love2014} and \acrfull{penda} to carry 
 \acrshort{de} analysis was performed on the two datasets \acrshort{pdcl} and \acrshort{tcga} where we compared all the tumourous samples against all the normal samples (glioblastoma versus normal).
 With this approach, we identify a typical profile or the typical gene deregulations in the case of glioblastoma.
 Glioblastomas are known to be heterogeneous tumours, hindering therapeutic success \cite*{Neftel2019,Delgado-Lopez2016, Quinones2018}.
-Since the approach described does not account for heterogeneity between patients, we compared each sample from the \acrshort{pdcl} dataset one by one with all the controls.
+Since the approach described does not account for heterogeneity between patients, we compared each sample one by one with all the controls for both datasets.
 This second approach defines the deregulation for each sample, giving the ability to determine the biological functions that are frequently deregulated or cell line specific.
 However, DESeq2 hypothesis assumes several replicates are available in the dataset.
-This condition is not met since the \acrshort{pdcl} dataset contains one replicate per patient, leading to reduced accuracy.
-In addition to DESeq2, results generated with \acrshort{penda} during a previous study were used for this analysis.
-The results from DESeq2 and \acrshort{penda} were fed to different pathway enrichment tools.
+This condition is not met since in this case we compare only one sample with no replicate against all the controls, leading to reduced accuracy.
+Thus we will use \acrshort{penda}, a statistical method designed for this purpose.
+Because this tool does not compute a metric to perform its test (rank comparison method) the results from \acrshort{penda} are then fed to G:Profiler only.
 
 \subsubsection{DESeq2}
 
@@ -91,6 +91,7 @@ In comparison, population-scale analysis tools like DESeq2 usually model the dat
 Those methods were designed to investigate typical gene deregulations patterns, consequently, they do not provide information at the individual scale.
 They are also sensitive to batch effects and the choice of normalization applied.
 With all these limitations in mind, \acrshort{penda} was designed to investigate gene expression data at the individual scale with robustness to batch and normalization effects.
+For our PenDA analysis, we normalize the counts using the pseudo-count method ( $log_2(count + 1)$ ) from the DESeq2 package before filtering and ranking with the \acrshort{penda}.
 
 \subsection{Pathway Enrichment Analysis}
 
@@ -173,13 +174,13 @@ Plots and reports, available as supplementary materials, were generated with the
     \includegraphics[width=\textwidth]{img/workflow-diagram}
     \caption{
         Diagram of the overall approach to search for the altered biological functions in glioblastoma.
-        The top panel describes the workflow to find the typical deregulation in glioblastoma while the bottom panel represents the workflow to analyze the specificities of each sample in the \acrshort{pdcl} dataset.
-        In the first case, the dataset includes the expression of all tumour samples and control samples.
-        Here, only DESeq2 is used for \acrlong{de} analysis.
-        In the second case, one dataset is created per sample with one \acrshort{pdcl} and all the controls.
-        \acrshort{penda} and DESeq2 are used for \acrlong{de} analysis.
-        In both cases, G:Profiler and \acrshort{gsea} are selected to carry out pathway enrichment.
-        Then we filter out pathways that do not pass the threshold of significance or that are not common to the two pathway enrichment tools.
+        The top panel describes the workflow to find the typical deregulation in glioblastoma : a global analysis at the population level.
+        In this case, we compare all the controls against all the glioblastoma samples in the dataset.
+        We use DESeq2 to perform the \acrlong{de} analysis with each tumour and control samples considered as a "replicate of a typical patient or normal tissue".
+        Then, we use G:Profiler and \acrshort{gsea} on the result of DESeq2 to perform pathway enrichment.
+        The bottom panel describes the workflow adopted to assess the specific deregulations of each samples in both datasets : a personnalized analysis.
+        Here we PenDA, a tool designed to perform \acrshort{de} analysis at the individual scale.
+        In this case, we only apply G:Profiler on the PenDA results.
     }
     \label{fig:workflow-diagram-global}
 \end{figure}
