@@ -1,5 +1,41 @@
 \section{Results}
 
+\subsection{Validation of the controls}
+
+To perform the \acrlong{de} analysis, we need to ensure that (1) the controls can be separated from the tumours; (2) the controls are similar to each others; (3) general count distribution is similar between control and tumour.
+Despite that the controls should be separated from the tumours, it has been observed for different types of cancer in \acrshort{tcga} that the gene expression follows a similar distribution between the two conditions \cite*{Decamps2021}.
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{img/pca_plot}
+    \caption{
+        Plot of the \acrshort{pca} on the counts of control and glioblastoma samples of the \acrshort{pdcl} and \acrshort{tcga} datasets.
+        Counts were normalized using the pseudo-log method of the DESeq2 package ( $log_2(count+1)$ ).
+    }
+    \label{fig:pca-plot}
+\end{figure}
+
+Figure \ref*{fig:pca-plot} shows the results of a \acrfull{pca} performed on the counts normalized using the pseudo-log method from the DESeq2 package ( $log_2(count+1)$ ).
+It can be seen that the controls are clearly separated from the tumours  in both the \acrshort{pdcl} and the \acrshort{tcga} datasets by the first component of the \acrshort{pca}.
+The first principal component explain 40\% of the variance in \acrshort{tcga} and 24\% in \acrshort{pdcl}.
+In both datasets, the tumours samples tend to spread more accross the second component than the controls which seems to pack together.
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{img/density_plot}
+    \caption{
+        Plot of the density of the counts in control and glioblastoma samples of the \acrshort{pdcl} and \acrshort{tcga} datasets.
+        Counts were normalized using the pseudo-log method of the DESeq2 package ( $log_2(count+1)$ ).
+        Each lines represent a different sample.
+    }
+    \label{fig:density-plot}
+\end{figure}
+
+Figure \ref*{fig:density-plot} shows the distribution of normalized gene counts in controls and tumours among both datasets.
+Distribution of counts is similar among controls and tumours in both datasets.
+It should be noted though that in \acrshort{tcga}, the density of normalized counts for the peak at 0 is slightly higher in the controls while it is higher in the tumours for the peak at 10.
+Density value at the peak is closer between controls and tumours in the \acrshort{pdcl}.
+
+Together, these data seems to indicate that the controls choosen are suitable to perform the \acrlong{de} analysis then pathway enrichment.
+
 \subsection{Comparison of the deregulated pathways in the PDCL with the TCGA-GBM datasets}
 
 \subsubsection{Pathways mainly involved in the Cell-Cycle, DNA replication and Repair are shared between the two datasets}
