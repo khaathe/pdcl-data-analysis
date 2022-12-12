@@ -8,40 +8,37 @@ This database has been established by the \acrlong{icm} (ICM, Paris).
 Cells comes from tumour of 20 patients diagnosed with glioblastoma, they were then cultured \textit{in vitro} before RNA-Seq analysis was conducted.
 Results include the raw count value of approximately 20,000 genes for each sample.
 Only one replicate per sample is available.
+
 Because the \acrshort{pdcl} dataset does not include matching control samples, we compared them to astrocytes RNA-Seq data from a study on the characterization of different astrocytic models by Lundin \textit{et al} \cite*{Lundin2018}.
-\acrfull{ltnes} were generated from AF22 \acrfull{hipsc} obtained from a middle-aged female \cite*{Falk2012}.
-The medium was changed every other day and cells were passaged once they reached 80\% confluence; 7–9 passages during the differentiation protocol of 28 days.
-\acrshort{ltnes} cells were differentiated into astrocytes using a previously described protocol \cite*{Lundin2018} as follows: \acrshort{ltnes} cells were plated at 60,000 $cells/cm^2$ on 2 $\mu g/cm^2$ poly-L-ornithine and 0.2 $\mu g/cm^2$ laminin (PLO-Laminin) (Sigma, St. Louis, MO) double-coated culture vessels in FHIA-differentiation medium; DMEM/F12, N2 supplement (1:100; Invitrogen, Carlsbad, CA), B27 (1:100; Invitrogen), FGF2 (8 $ng/mL$; PeproTech, Rocky Hill, NJ), heregulin $1 \beta$ (10 $ng/mL$; Sigma), IGF1 (200 $ng/mL$; Sigma), activin A (10 $ng/mL$; PeproTech).
-RNAsequencing was performed on cells harvested on day 29 in 3 replicates.
-We selected 4 samples of different astrocyte cell lines with 3 replicates per sample, all information about the samples including the accession number are listed in table \ref*{table:list-control-samples}.
+The dataset contains 4 samples of different astrocyte cell lines with 3 replicates per sample, all information about the samples including the accession number are listed in table \ref*{table:list-control-samples}.
 
 \begin{table}
     \centering
-    \begin{tabular}{ |c| }
+    \begin{tabular}{ |c|c| }
         \hline
-        Sample Name \\
+        Accession Number & Sample name \\
         \hline
-        AF22\_NES\_Astro\_Br1\_d0\_01\_S1 \\
-        AF22\_NES\_Astro\_Br1\_d29\_37\_S46 \\
-        AF22\_NES\_Astro\_Br2\_d0\_02\_S12 \\
+        GSM2927872 & AF22\_NES-Astro\_d29\_Br1 \\
+        GSM2927873 & AF22\_NES-Astro\_d29\_Br2 \\
+        GSM2927874 & AF22\_NES-Astro\_d29\_Br3 \\
         \hline
-        AF22\_NES\_Astro\_Br2\_d29\_38\_S56 \\
-        AF22\_NES\_Astro\_Br3\_d0\_03\_S22  \\
-        AF22\_NES\_Astro\_Br3\_d29\_39\_S66 \\
+        GSM2927881 & iCellAstro\_Br1 \\
+        GSM2927882 & iCellAstro\_Br2 \\
+        GSM2927883 & iCellAstro\_Br3 \\
         \hline
-        C1\_NES\_Astro\_Br1\_d0\_04\_S32 \\
-        C1\_NES\_Astro\_Br2\_d0\_05\_S42 \\
-        C1\_NES\_Astro\_Br3\_d0\_06\_S52 \\
+        GSM2927884 & CCF\_Br1 \\
+        GSM2927885 & CCF\_Br2 \\
+        GSM2927886 & CCF\_Br3 \\
         \hline
-        c9\_nes\_astro\_br1\_d0\_07\_s62 \\
-        c9\_nes\_astro\_br2\_d0\_08\_s72 \\
-        c9\_nes\_astro\_br3\_d0\_09\_s2  \\
+        GSM2927887 & phaAstro\_Br1 \\ 
+        GSM2927888 & phaAstro\_Br2 \\ 
+        GSM2927889 & phaAstro\_Br3 \\ 
         \hline
     \end{tabular}
     \caption{
-        List of samples names in the downloaded data used as the control condition.
+        List of samples with their accession number used as the control condition.
         Each sample can be either downloaded separately or as one raw count file in text format using the accession number GSE109001 on \acrfull{geo}.
-        The accession number is an id to retrieve date on the \acrshort{geo} database.
+        The accession number is an ID to retrieve date on the \acrshort{geo} database.
         The dataset contains 4 samples of different astrocyte cell lines with 3 replicates per sample.
         At the time of the publication, data were last updated on January 29, 2019.
     }
