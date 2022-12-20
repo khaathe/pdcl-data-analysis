@@ -82,12 +82,14 @@ Therefore, the more pathways are being tested, the stronger the correction aplie
 \subsubsection{Investigation of selected pathways}
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{img/heatmap-fdr-global}
-    \caption{
-        Heatmap of deregulated pathways in the \acrshort{pdcl} and the \acrshort{tcga} datasets for (A) the \acrshort{kegg} database and (B) the Reactome database.
-        \acrshort{fdr} values below 5\% are considered significant (red) and their are not considered significant if greater than 5\% (blue).
-    }
-    \label{fig:heatmap-fdr-global}
+    \begin{center}
+        \includegraphics[height=0.7\paperheight]{img/heatmap-fdr-global}
+        \caption{
+            Heatmap of deregulated pathways in the \acrshort{pdcl} and the \acrshort{tcga} datasets for (A) the \acrshort{kegg} database and (B) the Reactome database.
+            \acrshort{fdr} values below 5\% are considered significant (red) and their are not considered significant if greater than 5\% (blue).
+        }
+        \label{fig:heatmap-fdr-global}
+    \end{center}
 \end{figure}
 
 The figure \ref*{fig:heatmap-fdr-global}, shows the \acrshort{fdr} values for different pathways from \acrshort{kegg} and Reactome given by G:Profiler and \acrshort{gsea} in both datasets.
@@ -198,3 +200,10 @@ The \textit{Hippo signaling pathway} (path:hsa04392, path:hsa04390) and \textit{
 As can be seen in figure \ref*{fig:barplot-categ-pdcl}, the sample \textit{4339-p21} is the most deregulated with around 40 pathways significantly enriched in both \acrshort{kegg} and Reactome.
 Most of the pathway found deregulated with the \acrshort{kegg} database, across all the \acrshort{pdcl} samples, are associated to \textit{Human Diseases}.
 \textit{Human Diseases} aside, the majority of deregulated pathways in the sample \textit{4339-p21} are associated to the \textit{Cellular Processes} and \textit{Environmental/Genetic Information Processing} \acrshort{kegg}, or the \textit{Cell-Cycle} Reactome category.
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{img/plot_cluster_pdcl}
+    \caption{
+    }
+    \label{fig:}
+\end{figure}
