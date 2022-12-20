@@ -12,7 +12,6 @@ We submit the list of genes to G:Profiler and \acrshort{gsea}, two pathway enric
 While G:Profiler only need the name of the deregulated genes, \acrshort{gsea} needs that each gene in the list is associated with a metric for its statistical test.
 We use the statistic computed by DESeq2 for its test as it gives the direction of deregulation (up or down) and the significance of the result (the further from zero, the more significant the deregulation is).
 A same mechanism can be defined slightly differently among the databases, hence we downloaded pathway informations from Reactome and \acrshort{kegg} to ensure the exhaustiveness of the results.
-In the last step, we select the results passing the significance threshold in both G:Profiler and \acrshort{gsea} to avoid false positives.
 We find that most of the mechanisms altered in both \acrshort{tcga} and \acrshort{pdcl} are involved in the Cell-Cycle, DNA replication and Repair.
 In both cases, the \textit{focal adhesion} and \textit{Collagen formation} pathways are deregulated.
 Despite few pathways involved in the metabolism are deregulated, we found the \textit{Cholesterol synthesis} affected by glioblastoma only in the \acrshort{pdcl} dataset.
