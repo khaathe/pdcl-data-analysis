@@ -201,9 +201,30 @@ As can be seen in figure \ref*{fig:barplot-categ-pdcl}, the sample \textit{4339-
 Most of the pathway found deregulated with the \acrshort{kegg} database, across all the \acrshort{pdcl} samples, are associated to \textit{Human Diseases}.
 \textit{Human Diseases} aside, the majority of deregulated pathways in the sample \textit{4339-p21} are associated to the \textit{Cellular Processes} and \textit{Environmental/Genetic Information Processing} \acrshort{kegg}, or the \textit{Cell-Cycle} Reactome category.
 
+\subsubsection{Sample clustering by their deregulated categories}
+
 \begin{figure}
-    \includegraphics[width=\textwidth]{img/plot_cluster_pdcl}
-    \caption{
-    }
-    \label{fig:}
+    \begin{center}
+        \includegraphics[height=0.6\paperheight]{img/plot_cluster_pdcl}
+        \caption{
+            Clustering of the \acrshort{pdcl} samples using the percentage of deregulation per biological categories.
+            Results are shown with (A) \acrshort{kegg} categories and (B) Reactome categories.
+            To generate a vector of values for each samples, we divided the number of pathways found significantly enriched for a category by the number of total pathways in this category present in the \acrshort{gmt} file.
+            Clustering was done using the K-Means method with 5 clusters.
+        }
+        \label{fig:cluster-plot-pdcl}
+    \end{center}
 \end{figure}
+
+For each samples, we divided the number of pathways deregulated in a category by the total number of pathways associated to this category in the \acrshort{gmt} file.
+We used the vector of values generated to perform clustering of the samples using the K-Means algorithm with 5 clusters.
+Results are shown in figure \ref*{fig:cluster-plot-pdcl} for \acrshort{kegg} and Reactome categories.
+There is a better delimitation of the cluster using \acrshort{kegg} categories than with Reactome where three clusters overlap a little.
+Although the sample \textit{4339-p21} is separated from others samples in both \acrshort{kegg} and Reactome, the clusters deined depend on the database.
+This shows how analyses of pathway enrichment results can vary depending on the database used.
+Reactome has more categories defined and used for clustering than \acrshort{kegg} (6 for \acrshort{kegg} and 16 for Reactome).
+Thus, filtering the \acrshort{gmt} file to include fewer categories may improve the result when performing clustering.
+With \acrshort{kegg} clustering, the first dimension separate samples based on the total number of deregulated processes.
+The second dimension separate samples with deregulated pathways associated with the \textit{ Metabolism }, \textit{ Cellular Processes} and \textit{Genetic Information Processing} from the samples with deregulated pathways mainly associated with the \textit{ Organismal Systems }, \textit{Environmental Information processing} and \textit{Human Diseases} categories.
+With Reactome clustering, the first dimension seems to separate samples with deregulated processes associated with the Cell-Cycle, DNA replication/repair, Gene expression, Signal Transduction and Immune System.
+The second dimension separate samples with processess of the Metabolism deregulated from samples with processes linked to the \acrshort{ecm}, Neuronal System, Disease, Transport of small molecules and others.
