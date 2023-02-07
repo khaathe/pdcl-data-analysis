@@ -201,6 +201,100 @@ As can be seen in figure \ref*{fig:barplot-categ-pdcl}, the sample \textit{4339-
 Most of the pathway found deregulated with the \acrshort{kegg} database, across all the \acrshort{pdcl} samples, are associated to \textit{Human Diseases}.
 \textit{Human Diseases} aside, the majority of deregulated pathways in the sample \textit{4339-p21} are associated to the \textit{Cellular Processes} and \textit{Environmental/Genetic Information Processing} \acrshort{kegg}, or the \textit{Cell-Cycle} Reactome category.
 
+\subsubsection{Pathways linked to the Cell-Cycle and the ECM interactions are the most frequenlty deregulated in TCGA-GBM samples}
+
+Tables \ref*{table:frequently-dereg-pathways-kegg-tcga} and \ref*{table:frequently-dereg-pathways-reactome-tcga} show the most frequently deregulated pathways in the \acrshort{tcga} dataset.
+While \textit{Focal adhesion} was the most frequently altered \acrshort{kegg} pathway among the \acrshort{pdcl} samples, it is fourth with \acrshort{tcga}.
+Furthermore, no pathways linked to the metabolism appear in the table for \acrshort{kegg} pathways.
+As expected, the \textit{p53 signalling} pathway is frequently altered with 118 samples out of 169 samples affected.
+Similar to the result obtained with \acrshort{pdcl} samples, 3 Reactome pathways linked to the collagen protein synthesis are among the pathways often dysregulated.
+Still with the Reactome database, 3 pathways involved in the Cell-Cycle are deregulated in at least 149 samples and seem to indicate that the \textit{G1/S Phase Transition} is the main part of the Cell-Cycle affected by glioblastoma.
+
+\begin{table}
+    \centering
+    \resizebox*{\textwidth}{!}{
+        \begin{tabular}{ |c|c|c|c|c| }
+            \hline
+            Database & Pathway ID & Description & Category & Number of Samples \\
+            \hline
+            KEGG & path:hsa04110 & Cell Cycle & Cellular Processes & 153 \\
+            KEGG & path:hsa04512 & ECM-receptor interaction & Environmental Information Processing & 147 \\
+            KEGG & path:hsa04145 & Phagosome & Cellular Processes & 130 \\
+            KEGG & path:hsa04510 & Focal adhesion & Cellular Processes & 129 \\
+            KEGG & path:hsa03030 & DNA replication & Genetic Information Processing & 126 \\
+            KEGG & path:hsa04640 & Hematopoietic cell lineage & Organismal Systems & 125 \\
+            KEGG & path:hsa04672 & Intestinal immune network for IgA production & Organismal Systems & 125 \\
+            KEGG & path:hsa04514 & Cell adhesion molecules & Environmental Information Processing & 124 \\
+            KEGG & path:hsa04612 & Antigen processing and presentation & Organismal Systems & 124 \\
+            KEGG & path:hsa03010 & Ribosome & Genetic Information Processing & 123 \\
+            KEGG & path:hsa04115 & p53 signaling pathway & Cellular Processes & 118 \\
+            KEGG & path:hsa04380 & Osteoclast differentiation & Organismal Systems & 94 \\
+            KEGG & path:hsa04218 & Cellular senescence & Cellular Processes & 92 \\
+            KEGG & path:hsa04658 & Th1 and Th2 cell differentiation & Organismal Systems & 87 \\
+            KEGG & path:hsa04061 & Viral protein interaction with cytokine and cytokine receptor & Environmental Information Processing & 86 \\
+            \hline
+        \end{tabular}
+    }
+    \caption{
+        Table of the frequently \acrshort{kegg} pathways deregulated in the \acrshort{tcga}.
+        Unsurprisingly, the \textit{Cell Cycle} pathway is the most deregulated one with 153 out of 169 samples affected.
+        Similar to the \acrshort{pdcl} dataset, the \textit{Focal adhesion} is one of the most frequenlty deregulated pathway with 129 samples.
+        Ohter pathways involved in the interaction between the cell and its environment are also frequenlty deregulated.
+        p53 signalling, a pathway known to be frequently deregulated in the case of glioblastoma, is also found in the results.
+    }
+    \label{table:frequently-dereg-pathways-kegg-tcga}
+\end{table}
+
+\begin{table}
+    \centering
+    \resizebox*{\textwidth}{!}{
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            Database & Pathway ID & Description & Category & Number of Samples \\
+            \hline
+            Reactome & R-HSA-1474290 & Collagen formation & Extracellular matrix organization & 159 \\
+            Reactome & R-HSA-1799339 & SRP-dependent cotranslational protein targeting to membrane & Metabolism of proteins & 156 \\
+            Reactome & R-HSA-453279 & Mitotic G1 phase and G1/S transition & Cell Cycle & 154 \\
+            Reactome & R-HSA-1650814 & Collagen biosynthesis and modifying enzymes & Extracellular matrix organization & 152 \\
+            Reactome & R-HSA-69206 & G1/S Transition & Cell Cycle & 151 \\
+            Reactome & R-HSA-2022090 & Assembly of collagen fibrils and other multimeric structures & Extracellular matrix organization & 149 \\
+            Reactome & R-HSA-6798695 & Neutrophil degranulation & Immune System & 149 \\
+            Reactome & R-HSA-69620 & Cell Cycle Checkpoints & Cell Cycle & 149 \\
+            Reactome & R-HSA-72695 & Formation of the ternary complex, and subsequently, the 43S complex & Metabolism of proteins & 149 \\
+            Reactome & R-HSA-72662 & Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S & Metabolism of proteins & 147 \\
+            Reactome & R-HSA-72649 & Translation initiation complex formation & Metabolism of proteins & 146 \\
+            Reactome & R-HSA-72689 & Formation of a pool of free 40S subunits & Metabolism of proteins & 146 \\
+            Reactome & R-HSA-156827 & L13a-mediated translational silencing of Ceruloplasmin expression & Metabolism of proteins & 145 \\
+            Reactome & R-HSA-2408522 & Selenoamino acid metabolism & Metabolism & 145 \\
+            Reactome & R-HSA-72702 & Ribosomal scanning and start codon recognition & Metabolism of proteins & 145 \\
+            \hline
+        \end{tabular}
+    }
+    \caption{
+        Table of the frequently Reactome pathways deregulated in the \acrshort{tcga}.
+        Similar to the results obtained with the \acrshort{pdcl} dataset, pathways linked to the collagen protein are found frequently deregulated (in more than 140 samples).
+        Results in the table seems to indicate that \textit{G1/S phase transition} is the main pahse of the cell cycle dysregulated in glioblastoma.
+    }
+    \label{table:frequently-dereg-pathways-reactome-tcga}
+\end{table}
+
+\begin{figure}
+    \includegraphics[width=\textwidth]{img/barplot-categ-tcga}
+    \caption{
+        Number of deregulated pathways per category and per sample in the \acrshort{tcga} dataset.
+        Sample names are not displayed to avoid overploting.
+        Like the result with \acrshort{pdcl} samples, the \textit{Disease} is among the most deregulated categories in both \acrshort{kegg} and Reactome.
+        While with \acrshort{pdcl}, Reactome pathways associated to the Cell-Cycle were predominantly deregualted in one sample, in \acrshort{tcga} the Cell-Cycle was greatly affected among all the samples.
+    }
+    \label{fig:barplot-categ-tcga}
+\end{figure}
+
+Like for the \acrshort{pdcl} dataset, we investigated what were the most affected biological categories for each samples and show the results in \ref*{fig:barplot-categ-tcga}.
+Same as in the \acrshort{pdcl}, the \textit{Disease} category is higly enriched in boh \acrshort{kegg} and Reactome.
+However, more different Reactome categories are present in the results with \acrshort{tcga}.
+In addition, while the \textit{Cell-Cycle} Reactome category was mostly observed affected in the \acrshort{pdcl} sample named \textit{4339-p21} (which was also the most affected sample), this category is grealty altered in all sample for \acrshort{tcga}.
+\acrshort{tcga} results are also marked by an increased alteration of protein's metabolism across all the samples.
+
 \subsubsection{Sample clustering by their deregulated categories}
 
 \begin{figure}
