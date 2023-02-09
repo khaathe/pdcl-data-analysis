@@ -20,12 +20,17 @@ The current standard of care consists of surgery followed by radiotherapy combin
 Intensive research failed to improve the patient outcome and the median survival for treated patients is only 14 months \cite*{Delgado-Lopez2016}.
 Even after tumour resection patients are not out of trouble as almost all tumours recur with a decreased sensibility to therapy \cite*{Campos2016}.
 
-In this article, we present a workflow to deduced the deregulated pathways from RNA-Seq data using statistical methods.
-We apply the method to the glioblastoma dataset available on the \acrfull{tcga} database and to our own dataset of glioblastoma RNA-Seq data.
-In a first time, we compare the dysregulation in the \acrshort{tcga} dataset with our own datasets to assess their similarities and specificities.
-One of the reason of therapeutic failure for glioblastoma lies into its heteregeneity \cite*{Neftel2019}.
-Yet, in this first approach we are looking for typical dysregulation in the case of glioblastoma.
-Thus in a second time, we compare each tumour samples of our own dataset one by one with all the controls to account for heterogeneity among samples.
-In this second approach, we look for the pathways commonly deregulated in our tumoural dataset.
-Finally, we briefly review the literature to validate 2 biological processes identified by our workflow and by which mechanisms they can be used as potential target for therapy.
-We also present shortly describe the limits of this study.
+In this article, we will present a method to study the deregulated pathways from RNA-Seq data using statistical methods.
+We apply the method to the TCGA-GBM project data available for download on the \acrfull{tcga} platform, and to a dataset called \acrfull{pdcl} shared by a collaborator.
+While the TCGA-GBM contains bulk glioblastoma tumour expression, the \acrshort{pdcl} data consist of single cell RNA-Seq from glioblastoma tumours.
+The method we use mainly consist of a \acrfull{de} analysis followed by a Pathway Enrichment analysis.
+In a first time, we compare the dysregulation between both datasets at a population level using the DESeq2 statiscal tool to assess the typical deregulation of glioblastoma.
+In a second approach, we assess the per samples deregulations to better assess the frequence of pathway deregulations. For that we use a tool called \acrfull{penda} designed toward this goal.
+To our knowledge, this is the only tool available to carry out \acrlong{de} analysis at the sample level.
+The author shows that in most cases, \acrshort{penda} outperforms other statiscal tool like DESeq2 \cite*{Richard2020}.
+Understanding of glioblastoma heterogeneity is one of the main of research as it is one of the reseaon of therapeutic failure when treating this kind of tumour \cite*{Neftel2019}.
+In disussion, we present the Cholesterol Metabolism, a pathway deregulated in \acrshort{pdcl} but not in \acrshort{tcga}, and the Collagen Sysnthesis, a pathway frequently deregulated in both our datasets with a role in cell migration.
+We briefly review the litterature on this two pathways and how they represent potential target for therapy.
+The goal of this publication is to present a method that we used to analyze expression data and a case study of such.
+It is not an exhaustive review of the available landscape of \acrlong{de} and Pathway Enrichment analysis nor a complete course on how to carry such investigation.
+Results accuracy and reliability can be improved in few ways, thus some biological results should be taken carefully.
