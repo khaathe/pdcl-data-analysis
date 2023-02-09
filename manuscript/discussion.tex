@@ -39,28 +39,26 @@ EGFR frequent upregulation causes the overexpression of YTHDF2, a downstream eff
 As a result, downregulation of the LXR$\alpha$ inhibits LXR$\alpha$-dependent cholesterol homeostasis which promotes glioblastoma proliferation and invasion.
 
 Our workflow starts with a \acrlong{de} analysis where we merely compare the gene expression of samples belonging to one condition with a control condition (usually a normal sample).
-The type of samples used for the control condition directly dictates what kind of information we will get.
-However, we had to download RNA-Seq data from healthy brain cells available in other studies as no matching controls were available for the \acrshort{pdcl} dataset.
-As a result, we introduce biological variability which can greatly impact the results.
-In the case of cholesterol metabolism, cholesterol synthesis is found downregulated in the \acrshort{pdcl} dataset which seems contradictory to the statement found in the literature (an increased cholesterol metabolism conferring an advantage to glioblastoma proliferation and invasion).
+Thus the quality of the controls used greatly influence the results.
+In this paper, cholesterol synthesis is found downregulated in the \acrshort{pdcl} dataset which seems contradictory to the statement found in the literature (an increased cholesterol metabolism conferring an advantage to glioblastoma proliferation and invasion).
 Glioblastoma cells tend to increase their cholesterol intake rather than increase the synthesis of cholesterol, made by astrocytes cells \cite*{Villa2016, Pirmoradi2019}.
-The control dataset used in this study includes RNA-Seq data coming from astrocyte which might explain this result.
+Controls used in this dataset were downloaded from another study and are composed of astrocyte cell lines which might explain this observation.
+We observed a high amount of pathways linked to diseases enriched in the results.
+This can be due to the biological variability introduced by using controls from a different study in the case of \acrshort{pdcl}, by the lack of controls or an effect of using bulk tumour in the case of \acrshort{tcga}.
+We investigated the contribution of a gene to a pathway and determined how many times a gene is associated with a pathway in the results to determine wether some genes might be reponsible for this observation.
+We found that some group of genes are involved in several different categories including the Disease categorie which may partially explain the amount of pathways linked to dieases (figures shown in supplementary material).
+Although we kept those pathways in our study, they should therefore filtered out of the \acrshort{gmt} before any analysis.
 
-Several replicates per sample are recommended to minimize the impact of both technical and biological variability \cite*{Conesa2016}.
-DESeq2 statistical test hypothesis assumes that several replicates are available per sample and allow the user to use complex formulae to describe how the variance should be computed \cite*{Love2014}.
-Here, neither dataset include several replicates per sample.
-As a result, we consider all the samples are replicates of a typical glioblastoma sample.
-
-Another limitation of our study lies in the RNA-Seq experiment protocol.
-Cells were taken from the tumour of patients diagnosed with glioblastoma and then cultivated \textit{in vitro}.
-To limit the variability and reduce any bias, controls were selected to be cultivated in the same condition and belong to the same cell type.
-Because both tumoural and normal samples were cultivated \textit{in vitro}, they do not represent accurately the \textit{in vivo} state of the cell.
-\textit{In vivo} dysregulation may be different due to the tumour microenvironment, as glioblastoma's heterogeneity is partially driven by the microenvironment \cite*{Neftel2019}.
-Nonetheless, most studies of tumour microenvironment rely on \textit{in vitro} models as \textit{in vivo} observations of cell's metabolism are hard \cite*{Xiao2019}.
-
-Finally, we have not found in the literature any publication that has evaluated the performance of the DESeq2 statistic as the gene metric for \acrshort{gsea}.
+We have not found in the literature any publication that has evaluated the performance of the DESeq2 statistic as the gene metric for \acrshort{gsea}.
 Generally, the fold change of a gene is used as a metric \cite*{Reimand2019}, but a study on the performance of 16 different metrics seems to show that tests statistic are better suited to rank genes for \acrshort{gsea} \cite*{Zyla2017}.
 We first used the fold change to rank genes in our dataset, which lead to poor results with few pathways common between \acrshort{gsea} and G:Profiler (results not shown).
 In comparison, the DESeq2 statistic yield much better performance and more comparable results between the 2 enrichment tools.
 The \acrshort{fdr} value for the \textit{Glioma} entry in \acrshort{kegg} with the \acrshort{tcga} dataset indicate that this statistic might be used as a potential metric to rank genes before enrichment with \acrshort{gsea}.
 More investigations to evaluate the performance of this metric are necessary.
+
+In this paper we used a tool called \acrlong{penda} designed to perform single sample \acrlong{de} analysis.
+To our knowledge, this is the only tool available to carry such studies and outperforms more conventionnal tools like DESeq2 according to the authors \cite*{Richard2020}.
+This approaches can be usefull to better determine the intra-tumour heterogeneity.
+It can be applied to single-cell data or to spatial transcriptomic to assess cellular and spatial heterogeneity in a tumour.
+If it is unfortunately not possible to assess the difference in expression as \acrshort{penda} does not compute any Fold Change, such tools will provide valuable information on the differences between cancer types.
+For example, the creator of \acrshort{penda} identified biomarkers for several types of cancer available on the \acrshort{tcga} platform.
