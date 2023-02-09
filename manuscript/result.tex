@@ -23,13 +23,15 @@ The first component explain more variances in the data in the \acrshort{pdcl} da
 In the \acrshort{tcga} datasets, the tumours samples tend to spread more accross the second component than the controls which seems to pack together while in the \acrshort{pdcl} dataset, controls are more scattered. 
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{img/density_plot}
-    \caption{
-        Plot of the density of the counts in control and glioblastoma samples of the \acrshort{pdcl} and \acrshort{tcga} datasets.
-        Counts were normalized using the pseudo-log method of the DESeq2 package ( $log_2(count+1)$ ).
-        Each lines represent a different sample.
-    }
-    \label{fig:density-plot}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{img/density_plot}
+        \caption{
+            Plot of the density of the counts in control and glioblastoma samples of the \acrshort{pdcl} and \acrshort{tcga} datasets.
+            Counts were normalized using the pseudo-log method of the DESeq2 package ( $log_2(count+1)$ ).
+            Each lines represent a different sample.
+        }
+        \label{fig:density-plot}
+    \end{center}
 \end{figure}
 
 Figure \ref*{fig:density-plot} shows the distribution of normalized gene counts in controls and tumours among both datasets.
@@ -81,18 +83,7 @@ Therefore, the more pathways are being tested, the stronger the correction aplie
 
 \subsubsection{Investigation of selected pathways}
 
-\begin{figure}
-    \begin{center}
-        \includegraphics[height=0.7\paperheight]{img/heatmap-fdr-global}
-        \caption{
-            Heatmap of deregulated pathways in the \acrshort{pdcl} and the \acrshort{tcga} datasets for (A) the \acrshort{kegg} database and (B) the Reactome database.
-            \acrshort{fdr} values below 5\% are considered significant (red) and their are not considered significant if greater than 5\% (blue).
-        }
-        \label{fig:heatmap-fdr-global}
-    \end{center}
-\end{figure}
-
-The figure \ref*{fig:heatmap-fdr-global}, shows the \acrshort{fdr} values for different pathways from \acrshort{kegg} and Reactome given by G:Profiler and \acrshort{gsea} in both datasets.
+\acrshort{fdr} values for different pathways from \acrshort{kegg} and Reactome given by G:Profiler and \acrshort{gsea} in both datasets is presented in supplemental material (\ref*{supp:heatmap-fdr-global}).
 As before, we see that a same pathways can be found enriched in one enrichment tool but not in another.
 For example, the \acrshort{fdr} for \textit{Oxidative phosphorylation} is significant in both dataset with \acrshort{gsea} but not with G:Profiler.
 In \acrshort{tcga}, the \textit{p53 signaling} pathway is found significant only with \acrshort{gsea} and it is not enriched with \acrshort{pdcl} data.
@@ -278,14 +269,16 @@ Still with the Reactome database, 3 pathways involved in the Cell-Cycle are dere
 \end{table}
 
 \begin{figure}
-    \includegraphics[width=\textwidth]{img/barplot-categ-tcga}
-    \caption{
-        Number of deregulated pathways per category and per sample in the \acrshort{tcga} dataset.
-        Sample names are not displayed to avoid overploting.
-        Like the result with \acrshort{pdcl} samples, the \textit{Disease} is among the most deregulated categories in both \acrshort{kegg} and Reactome.
-        While with \acrshort{pdcl}, Reactome pathways associated to the Cell-Cycle were predominantly deregualted in one sample, in \acrshort{tcga} the Cell-Cycle was greatly affected among all the samples.
-    }
-    \label{fig:barplot-categ-tcga}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{img/barplot-categ-tcga}
+        \caption{
+            Number of deregulated pathways per category and per sample in the \acrshort{tcga} dataset.
+            Sample names are not displayed to avoid overploting.
+            Like the result with \acrshort{pdcl} samples, the \textit{Disease} is among the most deregulated categories in both \acrshort{kegg} and Reactome.
+            While with \acrshort{pdcl}, Reactome pathways associated to the Cell-Cycle were predominantly deregualted in one sample, in \acrshort{tcga} the Cell-Cycle was greatly affected among all the samples.
+        }
+        \label{fig:barplot-categ-tcga}
+    \end{center}
 \end{figure}
 
 Like for the \acrshort{pdcl} dataset, we investigated what were the most affected biological categories for each samples and show the results in \ref*{fig:barplot-categ-tcga}.
