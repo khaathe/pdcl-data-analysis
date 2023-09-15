@@ -1,10 +1,10 @@
 \section{Discussion}
 
-In this study we presented a method using \acrlong{de} analysis and Pathway Enrichment, two statistical methods, to analyze RNA-Seq data and retrieve the altered biological functions.
-We will briefly review the literature on two results having a role in the \acrshort{ecm} and Metabolism to show how this method helped identify documented processes favouring glioblastoma growth.
+In this study we presented a methodology using two statiscal methods, \acrlong{de} analysis and Pathway Enrichment, to analyze RNA-Seq data and retrieve the altered biological functions.
+We will briefly review the literature on two results having a role in the \acrfull{ecm} and Metabolism to show how this method helped identify documented processes favouring glioblastoma growth.
 
 \textit{Focal adhesion}, the adhesion of the cell to the \acrshort{ecm}, is the most deregulated pathway in the \acrshort{pdcl} datasets.
-Linked to the \acrlong{ecm}, pathways involved in the collagen biosynthesis, a constituent of the \acrshort{ecm}, are frequently deregulated.
+Linked to the \acrshort{ecm}, pathways involved in the collagen biosynthesis, a constituent of the \acrshort{ecm}, are frequently deregulated.
 Evidence in the literature supports this result, showing the role of collagen and cell interaction in glioblastoma growth, invasiveness and migration.
 Furthermore, the constituent of the matrix in the tumour microenvironment differs from the composition of the matrix in the normal brain with higher collagen concentration \cite*{Mammoto2013}.
 Studies in the literature describe different mechanisms by which collagen can influence tumour growth.
@@ -45,20 +45,20 @@ Glioblastoma cells tend to increase their cholesterol intake rather than increas
 Controls used in this dataset were downloaded from another study and are composed of astrocyte cell lines which might explain this observation.
 We observed a high amount of pathways linked to diseases enriched in the results.
 This can be due to the biological variability introduced by using controls from a different study in the case of \acrshort{pdcl}, by the lack of controls or an effect of using bulk tumour in the case of \acrshort{tcga}.
-We investigated the contribution of a gene to a pathway and determined how many times a gene is associated with a pathway in the results to determine wether some genes might be reponsible for this observation.
+We investigated the contribution of a gene to a pathway and determined how many times a gene is associated with a pathway in the results to determine whether some genes might be reponsible for this observation.
 We found that some group of genes are involved in several different categories including the Disease categorie which may partially explain the amount of pathways linked to dieases (figures shown in supplementary material).
 Although we kept those pathways in our study, they should therefore filtered out of the \acrshort{gmt} before any analysis.
 
 We have not found in the literature any publication that has evaluated the performance of the DESeq2 statistic as the gene metric for \acrshort{gsea}.
 Generally, the fold change of a gene is used as a metric \cite*{Reimand2019}, but a study on the performance of 16 different metrics seems to show that tests statistic are better suited to rank genes for \acrshort{gsea} \cite*{Zyla2017}.
 We first used the fold change to rank genes in our dataset, which lead to poor results with few pathways common between \acrshort{gsea} and G:Profiler (results not shown).
-In comparison, the DESeq2 statistic yield much better performance and more comparable results between the 2 enrichment tools.
+In comparison, the DESeq2 statistic yields much better performance and more comparable results between the 2 enrichment tools.
 The \acrshort{fdr} value for the \textit{Glioma} entry in \acrshort{kegg} with the \acrshort{tcga} dataset indicate that this statistic might be used as a potential metric to rank genes before enrichment with \acrshort{gsea}.
 More investigations to evaluate the performance of this metric are necessary.
 
-In this paper we used a tool called \acrlong{penda} designed to perform single sample \acrlong{de} analysis.
+In this paper we used a tool called \acrfull{penda} designed to perform single sample \acrlong{de} analysis.
 To our knowledge, this is the only tool available to carry such studies and outperforms more conventionnal tools like DESeq2 according to the authors \cite*{Richard2020}.
 This approaches can be usefull to better determine the intra-tumour heterogeneity.
 It can be applied to single-cell data or to spatial transcriptomic to assess cellular and spatial heterogeneity in a tumour.
 If it is unfortunately not possible to assess the difference in expression as \acrshort{penda} does not compute any Fold Change, such tools will provide valuable information on the differences between cancer types.
-For example, the creator of \acrshort{penda} identified biomarkers for several types of cancer available on the \acrshort{tcga} platform.
+For example, the developers of \acrshort{penda} identified biomarkers for several types of cancer available on the \acrshort{tcga} platform.

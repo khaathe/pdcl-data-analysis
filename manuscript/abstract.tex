@@ -3,20 +3,19 @@
 RNA-Seq technology has become a standard to study gene expressions and discover how diseases alter biological mechanisms.
 Despite its wide utilization and range of applications, study and interpretation of RNA-Seq data still remain a challenge for most scientists. 
 Due to the variety of protocols described in the literature, it is especially hard for newcomers.
-A common approach to interpreting RNA-Seq data is to use Pathway Enrichment analysis, a statistical method that finds enriched pathways in a list of genes of interest.
+A common approach to interpreting RNA-Seq data is to use Pathway Enrichment analysis, a statistical method that finds enriched pathways for a list of genes of interest.
 In other words, this method turns a large list of genes into a smaller list of pathways.
 In this paper, we describe a workflow to analyze RNA-Seq data.
-We have RNA-Seq data from 20 patients diagnosed with glioblastoma.
-We also downloaded RNA-Seq data from the TCGA-GBM project, an initiative to sequence glioblastoma mutation and gene expression, from the \acrfull{tcga} database.
+We applied this workflow RNA-Seq data from 20 patients diagnosed with glioblastoma.
+We also used RNA-Seq data from the TCGA-GBM project, an initiative to sequence glioblastoma mutation and gene expression, from the \acrfull{tcga} database.
 The workflow starts with a \acrfull{de} analysis to determine which genes are deregulated in the case of glioblastoma.
 With this step we deduce a list of genes of interest.
 We selected the two tools DESeq2 and \acrfull{penda} for their performance and ease of use.
-We submit the list of genes to G:Profiler and \acrfull{gsea}, two pathway enrichment methods, to assess which pathways are present in the list.
+We submit the list of genes to G:Profiler and \acrfull{gsea}, two pathway enrichment methods, to assess which pathways emerge from this list.
 Because this method determines a typical profile of deregulations for glioblastoma, we performed an analysis where we compare each sample of the \acrshort{pdcl} dataset one by one to all controls.
 This second analysis better accounts for heterogeneity among the samples.
-We brielfy describe the result obtained with G:Profiler and \acrshort{gsea} and compare the differences between \acrshort{tcga} and \acrshort{pdcl}.
-We compare the result between \acrshort{tcga} and \acrshort{pdcl}.
-We found that most of the mechanisms that are found altered in both \acrshort{tcga} and \acrshort{pdcl} datasets are involved in the Cell-Cycle, DNA replication and repair.
+We brielfy describe the result obtained with G:Profiler and \acrshort{gsea} and compare the differences between \acrshort{tcga} and \acrfull{pdcl}.
+We found that most of the mechanisms that are found altered in both \acrshort{tcga} and \acrshort{pdcl} datasets are involved in the cell-cycle, DNA replication and repair.
 In the \acrshort{pdcl} dataset, the most commonly deregulated pathway is the \textit{focal adhesion} of the cell to the matrix.
 \textit{Collagen formation} and \textit{cholesterol synthesis} are pathways frequently deregulated as well. 
 A review of the literature shows that collagen is involved in glioblastoma growth, invasion and migration while cholesterol has been linked to glioblastoma growth.

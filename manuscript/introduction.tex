@@ -1,36 +1,34 @@
 \section{Introduction}
 
-RNA-Sequencing (RNA-Seq) are now a standard technology used by the life sciences community to obtain information about gene expressions in samples.
+RNA-Sequencing (RNA-Seq) is now a standard technology used by the Life Sciences community to obtain information about gene expressions in samples.
 With a wide range of applications, variations of RNA-Seq protocols and analyses described in the literature, new users can find RNA-Seq studies hard to conduct \cite*{Conesa2016}.
 Omics experiments generated data are growing at a fast rate, allowing the scientific community to find mechanisms related to a particular condition.
 Nevertheless, these experiments often produce a long list of genes to analyze which still represents a challenge for researchers. 
 Pathway enrichment analysis, a method that turns such a large list of genes into a smaller list of pathways, became a standard approach to interpret omics data \cite*{Reimand2019}.
 
 This method is very interesting as (1) it reduces the complexity of the data to analyze and (2) interpreting altered pathways is more tangible than a list of genes.
-3 generations of pathway enrichment have been developed to interpret high-throughput technologies data.
+Three generations of pathway enrichment have been developed to interpret high-throughput technologies data.
 The first generation, called \acrfull{ora}, statistically test for pathways that are found over or under-represented in a list of genes.
 These methods generally use a hypergeometric, chi-square or binomial distribution for their test.
-The second generation, called \acrfull{fcs}, hypothesize that not only individual large changes in gene expressions can significantly affect a pathway, but small coordinated changes in sets of genes can do as well.
+The second generation, called \acrfull{fcs}, hypothesizes that not only individual large changes in gene expressions can significantly affect a pathway, but small coordinated changes in sets of genes can do as well.
 \acrshort{fcs} methods use a gene-level statistic to compute each pathway's test statistic.
 The last generation, called \acrfull{pt}, goes further than the previous generation by using information about the interaction between genes (activation/inhibition, cell compartment) to test for enrichment.
-Despite more and more limitations have been addressed through the different generations of pathway enrichment, they are still limited by (1) the exhaustiveness of the information covered by current databases annotations and (2) the inability of these methods to account for the dynamic nature of a biological system \cite*{Khatri2012}.
+Although more and more limitations have been addressed through the different generations of pathway enrichment, they are still limited by (1) the exhaustiveness of the information covered by current databases annotations and (2) the inability of these methods to account for the dynamic nature of a biological system \cite*{Khatri2012}.
 
-Glioblastoma is an aggressive brain tumour classified grade IV by the \acrfull{who} known to be the most common as well as the deadliest brain cancer \cite*{Quinones2018,Cheng2015}.
+In this paper we will apply this methodology to address glioblastoma, an aggressive brain tumour classified grade IV by the \acrfull{who} known to be the most common as well as the deadliest brain cancer \cite*{Quinones2018,Cheng2015}.
 The current standard of care consists of surgery followed by radiotherapy combined with cycles of temozolomide chemotherapy \cite*{LeRhun2019}.
 Intensive research failed to improve the patient outcome and the median survival for treated patients is only 14 months \cite*{Delgado-Lopez2016}.
 Even after tumour resection patients are not out of trouble as almost all tumours recur with a decreased sensibility to therapy \cite*{Campos2016}.
 
 In this article, we will present a method to study the deregulated pathways from RNA-Seq data using statistical methods.
-We apply the method to the TCGA-GBM project data available for download on the \acrfull{tcga} platform, and to a dataset called \acrfull{pdcl} shared by a collaborator.
-While the TCGA-GBM contains bulk glioblastoma tumour expression, the \acrshort{pdcl} data consist of single cell RNA-Seq from glioblastoma tumours.
-The method we use mainly consist of a \acrfull{de} analysis followed by a Pathway Enrichment analysis.
+We apply the method to the TCGA-GBM project data available for use from the \acrfull{tcga} platform, and to a dataset of \acrfull{pdcl} from the \acrfull{icm}.
+While the TCGA-GBM contains bulk glioblastoma tumour expression, the \acrshort{pdcl} data consists of single cell RNA-Seq from glioblastoma tumours.
+The method we use mainly consists of a \acrfull{de} analysis followed by a Pathway Enrichment analysis.
 In a first time, we compare the dysregulation between both datasets at a population level using the DESeq2 statiscal tool to assess the typical deregulation of glioblastoma.
 In a second approach, we assess the per samples deregulations to better assess the frequence of pathway deregulations. For that we use a tool called \acrfull{penda} designed toward this goal.
 To our knowledge, this is the only tool available to carry out \acrlong{de} analysis at the sample level.
-The author shows that in most cases, \acrshort{penda} outperforms other statiscal tool like DESeq2 \cite*{Richard2020}.
-Understanding of glioblastoma heterogeneity is one of the main of research as it is one of the reseaon of therapeutic failure when treating this kind of tumour \cite*{Neftel2019}.
-In disussion, we present the Cholesterol Metabolism, a pathway deregulated in \acrshort{pdcl} but not in \acrshort{tcga}, and the Collagen Sysnthesis, a pathway frequently deregulated in both our datasets with a role in cell migration.
+The authors show that in most cases, \acrshort{penda} outperforms other statiscal tool like DESeq2 \cite*{Richard2020}.
+Understanding of glioblastoma heterogeneity is an important axis of research as heterogeneity is a cause of therapeutic failure when treating this kind of tumour \cite*{Neftel2019}.
+In the disussion we will address the \textit{Cholesterol Metabolism}, a pathway deregulated in \acrshort{pdcl} but not in \acrshort{tcga}, and the \textit{Collagen Synthesis}, a pathway frequently deregulated in both our datasets with a role in cell migration.
 We briefly review the litterature on this two pathways and how they represent potential target for therapy.
-The goal of this publication is to present a method that we used to analyze expression data and a case study of such.
-It is not an exhaustive review of the available landscape of \acrlong{de} and Pathway Enrichment analysis nor a complete course on how to carry such investigation.
-Results accuracy and reliability can be improved in few ways, thus some biological results should be taken carefully.
+The goal of this contribution is to present a method to analyze expression data illustrated by a case study.

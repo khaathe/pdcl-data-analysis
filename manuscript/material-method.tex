@@ -5,7 +5,7 @@
 \subsubsection{Patient-Derived Cell Line (PDCL)}
 
 This database has been established by the \acrlong{icm} (ICM, Paris).
-Cells comes from tumour of 20 patients diagnosed with glioblastoma, they were then cultured \textit{in vitro} before RNA-Seq analysis was conducted.
+Cells come from tumours of 20 patients diagnosed with glioblastoma, they were then cultured \textit{in vitro} before RNA-Seq analysis was conducted.
 Results include the raw count value of approximately 20,000 genes for each sample.
 Only one replicate per sample is available.
 
@@ -44,7 +44,7 @@ All commercial cell lines were cultivated according the manufacturer's recommend
     \caption{
         List of samples with their accession number used as the control condition.
         Each sample can be either downloaded separately or as one raw count file in text format using the accession number GSE109001 on \acrfull{geo}.
-        The accession number is an ID to retrieve date on the \acrshort{geo} database.
+        The accession number is an ID to retrieve data on the \acrshort{geo} database.
         The dataset contains 4 samples of different astrocyte cell lines with 3 replicates per sample.
         At the time of the publication, data were last updated on January 29, 2019.
     }
@@ -55,7 +55,7 @@ All commercial cell lines were cultivated according the manufacturer's recommend
 
 The dysregulations found in this dataset were compared with glioblastoma data from the TCGA-GBM project available on the \acrshort{tcga} database (version 33.1, May 31 2022).
 The TCGA-GBM project aim to sequence the mutations and gene expressions for the glioblastoma disease.
-Glioblastoma tumour was the first to be sequence by the \acrshort{tcga} initiative.
+Glioblastoma tumour was the first to be sequenced by the \acrshort{tcga} initiative.
 The dataset contains gene expressions for primary/recurrent tumours and solid normal tissues.
 All samples have been processed following the bioinformatic pipeline defined by \acrshort{tcga} and described on their website.
 Few normal transcriptomes profiling are available for the brain, hence this dataset is over-represented by tumourous samples with 169 tumour samples and 5 control samples.
@@ -69,9 +69,9 @@ To quantify the expression of a gene, those reads are then mapped to the genes o
 The number of mapped reads is computed for each gene giving a raw value called raw counts.
 Factors such as transcript (mRNA that went through post-transcriptional modification) length, the total number of reads and sequencing biases can impact the raw counts value, therefore this value is normalized to obtain a value suitable for comparison \cite*{Conesa2016}.
 Different tools are available to perform \acrshort{de} analysis such as edgeR \cite*{Robinson2010}, Limma \cite*{Ritchie2015}, DESeq2 \cite*{Love2014} and \acrshort{penda} \cite*{Richard2020}.
-In this study, we selected DESeq2 \cite*{Love2014} and \acrfull{penda} to carry out the \acrshort{de} analysis.
+In this study, we selected DESeq2 \cite*{Love2014} and \acrshort{penda} to carry out the \acrshort{de} analysis.
 
-\acrshort{de} analysis was performed on the two datasets \acrshort{pdcl} and \acrshort{tcga} where we compared all the tumourous samples against all the normal samples (glioblastoma versus normal).
+\acrshort{de} analysis was performed on the two datasets \acrshort{pdcl} and \acrshort{tcga} where we compared all the tumour samples against all the normal samples (glioblastoma versus normal).
 With this approach, we identify a typical profile or the typical gene deregulations in the case of glioblastoma.
 Glioblastomas are known to be heterogeneous tumours, hindering therapeutic success \cite*{Neftel2019,Delgado-Lopez2016, Quinones2018}.
 Since the approach described does not account for heterogeneity between patients, we compared each sample one by one with all the controls for both datasets.
@@ -88,7 +88,7 @@ As DESeq2 includes a built-in normalization method, only raw counts can be used 
 It also performs an automated detection of outliers, detection of genes with low counts, estimation of model parameters and gene expression dispersion.
 The $log_2$ fold change value is a numeric value used to quantify the strength and direction of deregulation (up or down) between a condition and the control.
 We selected DESeq2 for the features cited above, its ease of use and its overall performance \cite*{Love2014}.
-The Wald-Test statistic has 2 useful features : (1) the value is positive when a gene is upregulated and negative when it is downregulated; (2) the higher the absolute value of the statistic is, the more significant the fold change is, therefore it combines biological and statistical informations at the same time.
+The Wald-Test statistic has two useful features : (1) the value is positive when a gene is upregulated and negative when it is downregulated; (2) the higher the absolute value of the statistic is, the more significant the fold change is, therefore it combines biological and statistical informations at the same time.
 
 \subsubsection{ Personalized Differential Analysis (PenDA)}
 
@@ -97,25 +97,25 @@ In comparison, population-scale analysis tools like DESeq2 usually model the dat
 Those methods were designed to investigate typical gene deregulations patterns, consequently, they do not provide information at the individual scale.
 They are also sensitive to batch effects and the choice of normalization applied.
 With all these limitations in mind, \acrshort{penda} was designed to investigate gene expression data at the individual scale with robustness to batch and normalization effects.
-For our PenDA analysis, we normalize the counts using the pseudo-count method ( $log_2(count + 1)$ ) from the DESeq2 package before filtering and ranking with the \acrshort{penda}.
+For our PenDA analysis, we normalize the counts using the pseudo-count method ( $log_2(count + 1)$ ) from the DESeq2 package before filtering and ranking with \acrshort{penda}.
 
 \subsection{Pathway Enrichment Analysis}
 
-Here, we use the list of deregulated genes identified by the \acrlong{de} analysis as input to investigate the deregulated pathways in the \acrshort{pdcl} and \acrshort{tcga}.
-The \acrlong{pdcl} dataset was analyzed at both the population and the patient scale while the \acrshort{tcga} was only examined at the population scale.
+Here, we use the list of deregulated genes identified by the \acrlong{de} analysis as input to investigate the deregulated pathways in the \acrshort{pdcl} and \acrshort{tcga} datasets.
+They were both analyzed at the population and the patient scale.
 Here we selected the two tools G:Profiler and \acrfull{gsea} to run the pathway enrichment analysis.
-Both tools gives as an output a list of pathways with a p-value associated to each pathways.
-The p-value represent the probability that a pathways is found enriched due to a random effect rather than truly due to the condition studied.
+Both tools give as an output a list of pathways with a p-value associated to each pathways.
+The p-value represents the probability that a pathway is found enriched due to a random effect rather than truly due to the condition studied.
 Therefore the lower the p-value is, the more significant the result.
 When statistical testing is repeated, the p-value can be found significant by chance alone.
-Multiple-testing correction method adjust the significance of the p-value to correct for this effect.
+Multiple-testing correction methods adjust the significance of the p-value to correct for this effect.
 The most commonly used method, and the one used in this paper, is Benjaminini-Hochberg \acrfull{fdr} multiple-hypothesis correction method.
 Like for the p-value, we want the \acrshort{fdr} to be the lowest possible, generally below 0.05 yet 0.1 is also found in the literature \cite*{Reimand2019}.
-To reduce the number of pathways to investigate in the literature and to ensure the reliability of the result, we selected the results with a \acrshort{fdr} below 0.05 in G:Profiler and \acrshort{gsea}.
+To reduce the number of pathways to investigate in the literature and to ensure the reliability of the results, we selected the results with a \acrshort{fdr} below 0.05 in G:Profiler and \acrshort{gsea}.
 
 \subsubsection{G:Profiler}
 G:Profiler is a tool for finding biological processes enriched in a list of genes (for example a list of deregulated genes or a list of mutated genes) accessible either online using their web interface or using their API and libraries \cite*{Raudvere2019}.
-Only the names of the genes are needed in input.
+Only the names of the genes are needed as input.
 It searches for pathways or biological categories which are over-represented in a list of genes using the cumulative hypergeometric test.
 G:Profiler includes multiple hypothesis correction methods with a built-in method called g:SCS, developed by the G:Profiler team, or the more known Bonferroni and \acrshort{fdr} correction method.
 We choose the \acrshort{fdr} correction method as \acrshort{gsea} use the same method to be consistent between tools.
@@ -159,12 +159,12 @@ In this paper, we kept pathways of 15 to 500 genes.
 
 The protocol used in this study can be split into three steps :
 \begin{enumerate}
-    \item \acrfull{de} analysis is used to analyze RNA-Seq data, i.e. to produce a list of the genes that are deregulated in glioblastoma.
+    \item \acrfull{de} analysis is used to analyze RNA-Seq data, \textit{i.e.} to produce a list of the genes that are deregulated in glioblastoma.
     We compared, gene expression between samples taken from a patient's tumour with healthy astrocyte cells.
     \item Pathway Enrichment allows to find the deregulated pathways in the list of genes defined in the \acrshort{de} analysis.
-    Pathway enrichment analysis search for pathways that are enriched in a list of genes, in other words, pathways that are deregulated.
+    Pathway enrichment analysis searches for pathways that are enriched in a list of genes, in other words, pathways that are deregulated.
     For this step, we used two methods documented in the literature : G:Profiler and \acrfull{gsea}.
-    We downloaded pathway information from \acrfull{kegg} and Reactome, two pathway database that defined biological processes of the cell.
+    We downloaded pathway information from \acrfull{kegg} and Reactome, two pathway databases that defined biological processes of the cell.
     \item We compare the biological processes found deregulated in our datasets to identify the impaired mechanisms.
     In this regard, we mapped each pathway to their highest ancestors in the hierarchy of pathways to define biological categories for each database.
     For example, the entry \textit{G1/S phase transition} in Reactome is a child pathway of the entry \textit{Cell-Cycle}.
@@ -174,7 +174,7 @@ The protocol used in this study can be split into three steps :
 All the data analyses were carried out with the R programming language.
 G:Profiler pathway enrichment were performed with the official R librarie (version 0.2.1), and \acrshort{gsea} pathway enrichment with the \textit{fgsea} R package available on Bioconductor (version 1.12.0) \cite*{Korotkevich2021}.
 Plots and reports, available as supplementary materials, were generated with the ggplot2 (version 3.3.6) and rmarkdown (version 2.14) R library.
-
+The workflow presented is summarized in figure \ref*{fig:workflow-diagram-global}.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{img/workflow-diagram}
@@ -184,8 +184,8 @@ Plots and reports, available as supplementary materials, were generated with the
         In this case, we compare all the controls against all the glioblastoma samples in the dataset.
         We use DESeq2 to perform the \acrlong{de} analysis with each tumour and control samples considered as a "replicate of a typical patient or normal tissue".
         Then, we use G:Profiler and \acrshort{gsea} on the result of DESeq2 to perform pathway enrichment.
-        The bottom panel describes the workflow adopted to assess the specific deregulations of each samples in both datasets : a personnalized analysis.
-        Here we PenDA, a tool designed to perform \acrshort{de} analysis at the individual scale.
+        The bottom panel describes the workflow adopted to assess the specific deregulations of each samples in both datasets : a personalized analysis.
+        Here we use PenDA, a tool designed to perform \acrshort{de} analysis at the individual scale.
         In this case, we only apply G:Profiler on the PenDA results.
     }
     \label{fig:workflow-diagram-global}
