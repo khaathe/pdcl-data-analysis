@@ -7,13 +7,13 @@ Nevertheless, these experiments often produce a long list of genes to analyze wh
 Pathway enrichment analysis, a method that turns such a large list of genes into a smaller list of pathways, became a standard approach to interpret omics data \cite*{Reimand2019}.
 
 This method is very interesting as (1) it reduces the complexity of the data to analyze and (2) interpreting altered pathways is more tangible than a list of genes.
-Three generations of pathway enrichment have been developed to interpret high-throughput technologies data.
-The first generation, called \acrfull{ora}, statistically test for pathways that are found over or under-represented in a list of genes.
+Three generations of pathway enrichment have been developed to interpret high-throughput technology data.
+The first generation, called \acrfull{ora}, statistically tests for pathways that are found over or under-represented in a list of genes compared to a background set of genes.
 These methods generally use a hypergeometric, chi-square or binomial distribution for their test.
 The second generation, called \acrfull{fcs}, hypothesizes that not only individual large changes in gene expressions can significantly affect a pathway, but small coordinated changes in sets of genes can do as well.
 \acrshort{fcs} methods use a gene-level statistic to compute each pathway's test statistic.
 The last generation, called \acrfull{pt}, goes further than the previous generation by using information about the interaction between genes (activation/inhibition, cell compartment) to test for enrichment.
-Although more and more limitations have been addressed through the different generations of pathway enrichment, they are still limited by (1) the exhaustiveness of the information covered by current databases annotations and (2) the inability of these methods to account for the dynamic nature of a biological system \cite*{Khatri2012}.
+Although more and more limitations have been addressed through the different generations of pathway enrichment, they are still limited by (1) the exhaustiveness of the information covered by current database annotations and (2) the inability of these methods to account for the dynamic nature of a biological system \cite*{Khatri2012}.
 
 In this paper we will apply this methodology to address glioblastoma, an aggressive brain tumour classified grade IV by the \acrfull{who} known to be the most common as well as the deadliest brain cancer \cite*{Quinones2018,Cheng2015}.
 The current standard of care consists of surgery followed by radiotherapy combined with cycles of temozolomide chemotherapy \cite*{LeRhun2019}.
@@ -24,11 +24,11 @@ In this article, we will present a method to study the deregulated pathways from
 We apply the method to the TCGA-GBM project data available for use from the \acrfull{tcga} platform, and to a dataset of \acrfull{pdcl} from the \acrfull{icm}.
 While the TCGA-GBM contains bulk glioblastoma tumour expression, the \acrshort{pdcl} data consists of single cell RNA-Seq from glioblastoma tumours.
 The method we use mainly consists of a \acrfull{de} analysis followed by a Pathway Enrichment analysis.
-In a first time, we compare the dysregulation between both datasets at a population level using the DESeq2 statiscal tool to assess the typical deregulation of glioblastoma.
-In a second approach, we assess the per samples deregulations to better assess the frequence of pathway deregulations. For that we use a tool called \acrfull{penda} designed toward this goal.
+In a first time, we compare the deregulation between both datasets at a population level using the DESeq2 statistical tool to assess the typical deregulation of glioblastoma.
+In a second approach, we assess the per sample deregulation to better assess the frequency of pathway deregulation. For that we use a tool called \acrfull{penda} designed toward this goal.
 To our knowledge, this is the only tool available to carry out \acrlong{de} analysis at the sample level.
-The authors show that in most cases, \acrshort{penda} outperforms other statiscal tool like DESeq2 \cite*{Richard2020}.
+The authors show that under these conditions, \acrshort{penda} outperforms other statistical tools like DESeq2 \cite*{Richard2020}.
 Understanding of glioblastoma heterogeneity is an important axis of research as heterogeneity is a cause of therapeutic failure when treating this kind of tumour \cite*{Neftel2019}.
-In the disussion we will address the \textit{Cholesterol Metabolism}, a pathway deregulated in \acrshort{pdcl} but not in \acrshort{tcga}, and the \textit{Collagen Synthesis}, a pathway frequently deregulated in both our datasets with a role in cell migration.
-We briefly review the litterature on this two pathways and how they represent potential target for therapy.
+In the discussion we will address the \textit{Cholesterol Metabolism}, a pathway deregulated in \acrshort{pdcl} but not in \acrshort{tcga}, and the \textit{Collagen Synthesis}, a pathway frequently deregulated in both our datasets with a role in cell migration.
+We briefly review the literature on these two pathways and how they represent potential targets for therapy.
 The goal of this contribution is to present a method to analyze expression data illustrated by a case study.

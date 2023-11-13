@@ -4,17 +4,17 @@ In this article, we present a method relying on a statistical test to analyze bi
 We apply this method to glioblastoma, an aggressive and invasive kind of brain tumour with poor patient outcomes.
 We use a \acrfull{pdcl} dataset consisting of RNA-Seq data from 20 patients diagnosed with glioblastoma.
 We compare this dataset with a dataset composed of RNA-Seq data from the TCGA-GBM project accessible on the \acrshort{tcga} database.
-Our workflow starts by running a \acrlong{de} analysis on the RNA-Seq data to find genes whose expressions are affected by the glioblastoma disease.
+Our workflow starts by running a \acrlong{de} analysis on the RNA-Seq data to find genes whose expressions are affected by glioblastoma disease.
 This analysis produces a list of genes whose regulation is altered.
 To carry on this step, we selected the tools DESeq2 and \acrshort{penda} as they both show good performances.
 The second step finds the biological pathways enriched in this list of genes.
 We submit the list of genes to G:Profiler and \acrshort{gsea}, two pathway enrichment tools.
-While G:Profiler only need the name of the deregulated genes, \acrshort{gsea} needs that each gene in the list is associated with a metric for its statistical test.
+While G:Profiler only need the name of the deregulated genes, \acrshort{gsea} needs each gene in the list to be associated with a metric for its statistical test.
 We use the statistic computed by DESeq2 for its test as it gives the direction of deregulation (up or down) and the significance of the result (the further from zero, the more significant the deregulation is).
-A same mechanism can be defined slightly differently among the databases, hence we downloaded pathway informations from Reactome and \acrshort{kegg} to ensure the exhaustiveness of the results.
+The same mechanism can be defined slightly differently among the databases, hence we downloaded pathway information from Reactome and \acrshort{kegg} to ensure the exhaustiveness of the results.
 We find that most of the mechanisms altered in both \acrshort{tcga} and \acrshort{pdcl} are involved in the Cell-Cycle, DNA replication and Repair.
 In both cases, the \textit{focal adhesion} and \textit{Collagen formation} pathways are deregulated.
 Despite few pathways involved in the metabolism are deregulated, we found the \textit{Cholesterol synthesis} affected by glioblastoma only in the \acrshort{pdcl} dataset.
 When further studying the differences between the samples in the \acrshort{pdcl} dataset, we show that \textit{focal adhesion} is the most commonly deregulated pathway.
 Pathways involved in collagen synthesis and cholesterol metabolism are also among the most frequently deregulated.
-A review of the literature validated these results and show different mechanisms by which collagen and cholesterol can promote tumour growth, thus suggesting their potential in glioblastoma therapy.
+A review of the literature validated these results and showed different mechanisms by which collagen and cholesterol can promote tumour growth, thus suggesting their potential in glioblastoma therapy.

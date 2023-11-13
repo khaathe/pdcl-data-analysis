@@ -4,7 +4,7 @@ In this study we presented a methodology using two statiscal methods, \acrlong{d
 We will briefly review the literature on two results having a role in the \acrfull{ecm} and Metabolism to show how this method helped identify documented processes favouring glioblastoma growth.
 
 \textit{Focal adhesion}, the adhesion of the cell to the \acrshort{ecm}, is the most deregulated pathway in the \acrshort{pdcl} datasets.
-Linked to the \acrshort{ecm}, pathways involved in the collagen biosynthesis, a constituent of the \acrshort{ecm}, are frequently deregulated.
+Linked to the \acrshort{ecm}, pathways involved in collagen biosynthesis, a constituent of the \acrshort{ecm}, are frequently deregulated.
 Evidence in the literature supports this result, showing the role of collagen and cell interaction in glioblastoma growth, invasiveness and migration.
 Furthermore, the constituent of the matrix in the tumour microenvironment differs from the composition of the matrix in the normal brain with higher collagen concentration \cite*{Mammoto2013}.
 Studies in the literature describe different mechanisms by which collagen can influence tumour growth.
@@ -15,51 +15,51 @@ As an example, a protein that binds to collagen to internalize it, called Endo18
 This protein is lowly expressed in the normal brain but is strongly associated with the mesenchymal subclass of gliomas which is associated with grade IV gliomas, thus it has potential as a biomarker \cite*{Huijbers2010}.
 Although its expression differs between cell lines, collagen XVI has been found upregulated in glioblastoma compared to normal cells.
 Inhibition of endogenous expression of collagen XVI results in reduced cell adhesion to surface \cite*{Senner2008}.
-Collagen has been reported to affect angiogenesis, the formation of new blood vessels, important for tumour growth.
-Inhibition of collagen crosslinking and expression reduce angiogenesis and progression of glioblastoma without increasing cell invasion, hypoxia or necrosis in mice tumour compared to VEGF targeting anti-angiogenic drugs \cite*{Mammoto2013}.
+Collagen has been reported to affect angiogenesis, and the formation of new blood vessels, important for tumour growth.
+Inhibition of collagen crosslinking and expression reduces angiogenesis and progression of glioblastoma without increasing cell invasion, hypoxia or necrosis in mice tumours compared to VEGF targeting anti-angiogenic drugs \cite*{Mammoto2013}.
 Thus, targeting collagen structure and expression appears to be a potential therapy to decrease angiogenesis without the adverse effects of regular angiogenesis therapy.
-These evidence combined with the results of our study suggest that targeting \acrshort{ecm} of the glioblastoma microenvironment is a viable strategy in therapy.
+This evidence combined with the results of our study suggests that targeting \acrshort{ecm} of the glioblastoma microenvironment is a viable strategy in therapy.
 
 A specificity of the \acrshort{pdcl} dataset is the altered cholesterol metabolism.
-Brain is the most cholesterol-rich organ with approximately 20\% of the whole body cholesterol.
+The brain is the most cholesterol-rich organ with approximately 20\% of the whole body's cholesterol.
 Its cholesterol metabolism differs from other organs as the cholesterol cannot pass through the \acrfull{bbb}.
 Hence, cholesterol must be synthesized de novo in the brain \cite*{Villa2016,Yamamoto2018,Pirmoradi2019}.
-As for interactions between the cell and the \acrlong{ecm}, few evidence in the literature describe varied mechanisms by which high levels of cholesterol may promote tumour growth.
+As for interactions between the cell and the \acrlong{ecm}, few evidences in the literature describe varied mechanisms by which high levels of cholesterol may promote tumour growth.
 Firstly, densely packed normal astrocytes inhibit cholesterol synthesis while glioma cells maintain high cholesterol levels.
 Glioma cells were sensitive to cholesterol synthesis inhibition while astrocytes were not, suggesting that this pathway can be a viable target in therapy \cite*{Kambach2017}.
 Studies describe the antitumoral effect of many drugs targeting cholesterol metabolism in glioblastomas.
 For example, \acrfull{lxr} agonist LXR-623 is able to induce cell death in glioblastoma mouse model and spare normal cells by downregulating \acrfull{ldlr} mediated cholesterol intake \cite*{Villa2016, Pirmoradi2019}.
 Phytol and retinol exhibit cytotoxic activity in glioblastoma cell lines (U87MG, A172 and T98G) in a dose-dependent way by down-regulating genes involved in cholesterol and/or fatty acid synthesis \cite*{Facchini2018}.
 Targeting cholesterol trafficking with itraconazole suppresses the growth of glioblastoma by inducing autophagy \cite*{Liu2014} while alkylphospholipids also induced cell cycle arrest in G2/M phase in U87MG cells \cite*{Rios-Marco2013}.
-Cholesterol has been observed to modulate the efficiency of \acrfull{tmz}, a drug widely used in treatment of glioblastoma.
+Cholesterol has been observed to modulate the efficiency of \acrfull{tmz}, a drug widely used in the treatment of glioblastoma.
 Its interaction with the \acrshort{bbb} membrane increases its rigidity, slowing down the distribution of the \acrshort{tmz} active metabolite (MTIC) which cannot reach cytotoxic dose in tumoural tissue \cite*{Ramalho2019}.
 Higher levels of intracellular cholesterol enhance \acrshort{tmz} apoptosis activation through the DR5 plasma membrane death receptor \cite*{Yamamoto2018}.
 The RTK/RAS/PI3K signalling pathway is frequently altered in glioblastoma with its component EGFR upregulated \cite*{McLendon2008}.
 EGFR frequent upregulation causes the overexpression of YTHDF2, a downstream effector of the EGFR/SRC/ERK signalling.
 As a result, downregulation of the LXR$\alpha$ inhibits LXR$\alpha$-dependent cholesterol homeostasis which promotes glioblastoma proliferation and invasion.
 
-Our workflow starts with a \acrlong{de} analysis where we merely compare the gene expression of samples belonging to one condition with a control condition (usually a normal sample).
-Thus the quality of the controls used greatly influence the results.
+Our workflow starts with a \acrlong{de} analysis where we compare the gene expression of samples belonging to one condition with a control condition (usually a normal sample).
+Thus the quality of the controls used greatly influences the results.
 In this paper, cholesterol synthesis is found downregulated in the \acrshort{pdcl} dataset which seems contradictory to the statement found in the literature (an increased cholesterol metabolism conferring an advantage to glioblastoma proliferation and invasion).
-Glioblastoma cells tend to increase their cholesterol intake rather than increase the synthesis of cholesterol, made by astrocytes cells \cite*{Villa2016, Pirmoradi2019}.
+Glioblastoma cells tend to increase their cholesterol intake rather than increase the synthesis of cholesterol, made by astrocyte cells \cite*{Villa2016, Pirmoradi2019}.
 Controls used in this dataset were downloaded from another study and are composed of astrocyte cell lines which might explain this observation.
 We observed a high amount of pathways linked to diseases enriched in the results.
 This can be due to the biological variability introduced by using controls from a different study in the case of \acrshort{pdcl}, by the lack of controls or an effect of using bulk tumour in the case of \acrshort{tcga}.
-We investigated the contribution of a gene to a pathway and determined how many times a gene is associated with a pathway in the results to determine whether some genes might be reponsible for this observation.
-We found that some group of genes are involved in several different categories including the Disease categorie which may partially explain the amount of pathways linked to dieases.
+We investigated the contribution of a gene to a pathway and determined how many times a gene is associated with a pathway in the results to determine whether some genes might be responsible for this observation.
+We found that some groups of genes are involved in several different categories including the Disease category which may partially explain the amount of pathways linked to diseases.
 More can be seen in the supplementary materials.
 Although we kept those pathways in our study, they should therefore filtered out of the \acrshort{gmt} before any analysis.
 
 We have not found in the literature any publication that has evaluated the performance of the DESeq2 statistic as the gene metric for \acrshort{gsea}.
-Generally, the fold change of a gene is used as a metric \cite*{Reimand2019}, but a study on the performance of 16 different metrics seems to show that tests statistic are better suited to rank genes for \acrshort{gsea} \cite*{Zyla2017}.
-We first used the fold change to rank genes in our dataset, which lead to poor results with few pathways common between \acrshort{gsea} and G:Profiler (results not shown).
+Generally, the fold change of a gene is used as a metric \cite*{Reimand2019}, but a study on the performance of 16 different metrics seems to show that test statistics are better suited to rank genes for \acrshort{gsea} \cite*{Zyla2017}.
+We first used the fold change to rank genes in our dataset, which led to poor results with few pathways common between \acrshort{gsea} and G:Profiler (results not shown).
 In comparison, the DESeq2 statistic yields much better performance and more comparable results between the 2 enrichment tools.
-The \acrshort{fdr} value for the \textit{Glioma} entry in \acrshort{kegg} with the \acrshort{tcga} dataset indicate that this statistic might be used as a potential metric to rank genes before enrichment with \acrshort{gsea}.
+The \acrshort{fdr} value for the \textit{Glioma} entry in \acrshort{kegg} with the \acrshort{tcga} dataset indicates that this statistic might be used as a potential metric to rank genes before enrichment with \acrshort{gsea}.
 More investigations to evaluate the performance of this metric are necessary.
 
-In this paper we used a tool called \acrfull{penda} designed to perform single sample \acrlong{de} analysis.
-To our knowledge, this is the only tool available to carry such studies and outperforms more conventionnal tools like DESeq2 according to the authors \cite*{Richard2020}.
-This approaches can be usefull to better determine the intra-tumour heterogeneity.
-It can be applied to single-cell data or to spatial transcriptomic to assess cellular and spatial heterogeneity in a tumour.
+In this paper, we used a tool called \acrfull{penda} designed to perform single sample \acrlong{de} analysis.
+To our knowledge, this is the only tool available to carry out such studies and outperforms more conventional tools like DESeq2 according to the authors \cite*{Richard2020}.
+This approach can be useful to better determine the intra-tumour heterogeneity.
+It can be applied to single-cell data or to spatial transcriptomics to assess cellular and spatial heterogeneity in a tumour.
 If it is unfortunately not possible to assess the difference in expression as \acrshort{penda} does not compute any Fold Change, such tools will provide valuable information on the differences between cancer types.
 For example, the developers of \acrshort{penda} identified biomarkers for several types of cancer available on the \acrshort{tcga} platform.
